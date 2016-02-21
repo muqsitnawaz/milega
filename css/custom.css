@@ -1,0 +1,16 @@
+/* This is a Custom Style Sheet */
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url(http://fonts.googleapis.com/css?family=Cabin);
+@import url(http://fonts.googleapis.com/css?family=Varela+Round);
+
+.scrollToTop{
+	width: 80px;
+	height: 80px;
+	background-color: #6ecefc;
+	border-radius: 50%;
+	position: fixed;
+	top: 85%;
+	right: 2%;
+	z-index: 10;
+	display:none;
+}

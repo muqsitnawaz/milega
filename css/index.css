@@ -29,3 +29,181 @@ body {
 .carousel-control {
     border-radius: 12px;
 }
+
+/* Start Footer Section */
+
+.footer-section {
+    border-bottom: 1px solid #0f0f0f;
+    background: #222222;
+    color: #999;
+    font-weight: 400;
+    padding: 80px 0 60px;
+}
+
+.footer-section p {
+    color: #999;
+}
+
+.footer-section .section-title {
+    color: #c5c5c5;
+}
+
+.footer-section .section-heading-2 span:after {
+    background: #434343;
+}
+
+.footer-section .section-heading-2 .section-title:after {
+    background-color: #363636;
+}
+
+.footer-section .section-heading-2 h3{
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.footer-address ul li {
+    padding: 5px 0;
+}
+
+.footer-address ul li .fa {
+    color: #6a6a6a;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.footer-address ul li a {
+    color: #9d9d9d;
+}
+
+.footer-address ul li a:hover {
+    color: #FF432E;
+}
+
+.latest-tweet .media-body {
+    padding: 5px 14px 5px 6px;
+}
+
+.latest-tweet .media-body p {
+    font-size: 13px;
+    color: #aaa;
+}
+
+.latest-tweet h4.media-heading {
+    font-size: 10px;
+    color: #FF432E;
+}
+
+
+.footer-social ul.social-list li {
+    padding-right: 2px;
+}
+
+.footer-social ul.social-list li a i {
+    font-size: 18px;
+	display: block;
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+}
+
+.footer-social ul.social-list li a {
+    background: #2e2e2e;
+    color: #9d9d9d;
+    transition: background 0.3s;
+    -webkit-transition: background 0.3s;
+    -moz-transition: background 0.3s;
+    -o-transition: background 0.3s;
+}
+
+.footer-social ul.social-list li a:hover {
+    background: #FF432E;
+    color: #000;
+}
+
+.flickr-widget li {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: 23.97%;
+}
+
+.flickr-widget li img {
+    width: 100%;
+    height: auto;
+}
+
+/* End Footer Section */
+
+/* Start Copyright Section */
+
+.copyright-section {
+    border-top: 1px solid #363636;
+    font-size: 12px;
+    padding: 20px 0;
+    background: #1d1d1d;
+    color: #7f7f7f;
+}
+
+.copyright {
+    font-size: 14px;
+}
+
+.copyright-section a {
+    color: #7f7f7f;
+}
+
+.copyright-section a:hover {
+    color: #FF432E;
+}
+
+.copyright-menu li {
+    display: inline;
+    padding-left: 10px;
+}
+
+.copyright-menu li a {
+    color: #7f7f7f;
+    font-weight: 500;
+}
+
+.copyright-menu li a.active {
+    color: #fff;
+    font-size: 13px;
+}
+
+.copyright-menu li a:hover {
+    color: #FF432E;
+}
+
+/* End Copyright Section */
+
+
+.sidebar .section-heading-2 {
+    margin-bottom: 30px;
+}
+
+.sidebar .section-heading-2 h3 {
+    font-size: 20px;
+    text-transform: capitalize;
+    color: #32313b;
+    font-weight: 400;
+}
+.section-title {
+    margin-bottom: 80px;
+}
+
+.section-title h2{
+    color: #111;
+    font-size: 48px;
+    font-family: 'PT Sans Narrow', Arial, sans-serif;
+    text-transform: none;
+}
+
+.section-title p {
+    //padding-bottom: 60px;
+    color: #111;
+    letter-spacing: 1px;
+    font-size: 18px;
+    font-weight: 300;
+}

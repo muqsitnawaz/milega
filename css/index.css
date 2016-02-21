@@ -13,3 +13,19 @@ body {
 	padding-top: 1em;
 }
 
+.middle-cats {
+	padding-top: 6em;
+}
+
+.middle-car {
+	padding-top: 5em;
+}
+
+.carousel .item {
+    border-radius: 12px;
+    background-color: rgba(0,0,0,0);
+    overflow: hidden;
+}
+.carousel-control {
+    border-radius: 12px;
+}

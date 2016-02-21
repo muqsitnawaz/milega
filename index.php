@@ -62,44 +62,77 @@
 
     <!-- section 2: sidebar and carousel -->
     <div class="row">
+    	<!-- sidebar -->
+    	<div style="padding-left: 1.5em;">
+    		<div class="col-md-3 middle-cats">
+				<div class="panel panel-default">
+				  	<div class="panel-heading">
+				    	<h3 class="panel-title">Categories</h3>
+				  	</div>
+				  	<div class="panel-body">
+				    	<ul class="list-group">
+							<li class="list-group-item active">Men's Wear</li>
+							<li class="list-group-item">Subcat 1</li>
+							<li class="list-group-item">Subcat 2</li>
+						</ul>
+						<ul class="list-group">
+							<li class="list-group-item active">Women's Wear</li>
+							<li class="list-group-item">Subcat 1</li>
+							<li class="list-group-item">Subcat 2</li>
+						</ul>
+						<ul class="list-group">
+							<li class="list-group-item active">Electronics</li>
+							<li class="list-group-item">Subcat 1</li>
+							<li class="list-group-item">Subcat 2</li>
+							<li class="list-group-item">Subcat 3</li>
+						</ul>
+				  	</div>
+				</div>
+			</div>
+    	</div> 
 
     	<!-- carousel -->
-    	<div class="col-md-10-col-md-offset-1">
+    	<div class="col-md-8 middle-car">
     		<div class="container carousel-container wow bounceInRight">
 				<div class="row">
-					<div class="col-md-12">
-						<div id="artCarousel" class="carousel slide">
+					<div class="col-md-10">
+						<div id="mainCarousel" class="carousel slide">
 							<ol class="carousel-indicators">
-								<li data-target="artCarousel" data-slide-to="0" class="active"></li>
-								<li data-target="artCarousel" data-slide-to="1"></li>
-								<li data-target="artCarousel" data-slide-to="2"></li>
+								<li data-target="mainCarousel" data-slide-to="0" class="active"></li>
+								<li data-target="mainCarousel" data-slide-to="1"></li>
+								<li data-target="mainCarousel" data-slide-to="2"></li>
 							</ol>
 							<div class="carousel-inner">
 								<div class="item active">
-									<img src="images/carousel1.jpg" alt="">
+									<img src="images/mainCar1.jpg" alt="">
 								</div>
 								<div class="item">
-									<img src="images/carousel2.jpg" alt="">
+									<img src="images/mainCar2.jpg" alt="">
 								</div>
 								<div class="item">
-									<img src="images/carousel3.jpg" alt="">
+									<img src="images/mainCar3.jpg" alt="">
 								</div>
 							</div> <!-- end of inner-carousel -->
 
 							<!-- carousel controls -->
-							<a class="left carousel-control" href="#artCarousel" role="button" data-slide="prev" onclick="$('#myCarousel').carousel('prev')">
+							<a class="left carousel-control" href="#mainCarousel" role="button" data-slide="prev" onclick="$('#mainCarousel').carousel('prev')">
 								<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 								<span class="sr-only">Previous</span>
 							</a>
-							<a class="right carousel-control" href="#artCarousel" role="button" data-slide="next" onclick="$('#myCarousel').carousel('next')">
+							<a class="right carousel-control" href="#mainCarousel" role="button" data-slide="next" onclick="$('#mainCarousel').carousel('next')">
 								<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 								<span class="sr-only">Next</span>
 							</a>
 						</div> <!-- end of carousel -->
-					</div> <!-- end of column -->
-				</div> <!-- end of row -->
+					</div>
+				</div>
 			</div>
     	</div>
+    </div> <!-- end of section 2 -->
+
+    <!-- section 3 -->
+    <div class="row">
+    	
     </div>
 
     <!-- section 3: footer -->
@@ -117,6 +150,11 @@
 
 			// init wow animator
 			new WOW().init();
+
+			// carousel sliding
+			$('.carousel').carousel({
+		      	interval: 10000
+		    })
 
 			// scroll-to-top button
 			$(window).scroll(function(){

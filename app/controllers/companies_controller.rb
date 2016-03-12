@@ -13,9 +13,13 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @company = Company.create! company_params
+    @company = Company.new company_params
 
-    redirect_to companies_path
+    if @company.save
+        redirect_to companies_path
+    else
+        render 'new'
+    end
   end
 
   def edit
@@ -24,9 +28,12 @@ class CompaniesController < ApplicationController
 
   def update
     @company = Company.find_by_id(params[:id])
-    @company.update_attributes! company_params
 
-    redirect_to companies_path
+    if @company.update(company_params)
+        redirect_to companies_path
+    else
+        render 'edit'
+    end
   end
 
   def destroy

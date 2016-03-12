@@ -1,0 +1,21 @@
+<h2>Companies Index</h2>
+<hr>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Delete</th>
+  </tr>
+
+  <% @companies.each do |c| %>
+    <tr>
+      <td> <%= c.cname %> </td>
+      <td> <%= c.ctype %> </td>
+      <td> <%= link_to 'Delete', company_path(c), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+<%= link_to 'New Company', new_company_path %>

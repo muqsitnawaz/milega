@@ -9,13 +9,14 @@
 companies = [
     {cname: "Levis", ctype: "Clothing"},
     {cname: "Apple", ctype: "Electronics"},
-    {cname: "Hermes", ctype: "Clothing"}
+    {cname: "Hermes", ctype: "Clothing"},
+    {cname: "Levis Strauss", ctype: "Clothing"}
 ];
 
 products = Hash[
     "levis" => [
-        {:pname => "Jeans 1", :pdescrip => "Cotton Jeans Pants", :pprice => "20"},
-        {:pname => "Jeans 2", :pdescrip => "Denim Jeans Pants", :pprice => "80"}
+        {:pname => "Cotton Jeans", :pdescrip => "Cotton Jeans Pants", :pprice => "20"},
+        {:pname => "Denim Jeans", :pdescrip => "Denim Jeans Pants", :pprice => "80"}
     ],
 
     "apple" => [
@@ -25,8 +26,14 @@ products = Hash[
     ],
 
     "hermes" => [
-        {:pname => "Jeans", :pdescrip => "Denim Jeans Pants", :pprice => "200"},
-        {:pname => "Shirt", :pdescrip => "Causal Cotton Shirt", :pprice => "80"}
+        {:pname => "Denim Jeans", :pdescrip => "Denim Jeans Pants", :pprice => "200"},
+        {:pname => "Causal Shirt", :pdescrip => "Causal Cotton Shirt", :pprice => "80"},
+        {:pname => "Bow Tie", :pdescrip => "Dark Black formal bow tie", :pprice => "25"},
+    ],
+
+    "levis strauss" => [
+        {:pname => "Denim Jeans", :pdescrip => "Denim Jeans Pants", :pprice => "70"},
+        {:pname => "T- Shirt", :pdescrip => "Grey t-shirt for Summer", :pprice => "15"}
     ]
 ]
 

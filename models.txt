@@ -1,0 +1,20 @@
+Three main things:
+a. Companies
+b. Their products
+c. And customers
+
+Static pages:
+  Methods:
+    welcome, 
+    search, 
+    admin
+
+Company
+  has_many products
+
+  Methods: show, create, edit, delete
+
+Product 
+  belongs_to Company
+
+  Methods: index, show, create, edit, delete

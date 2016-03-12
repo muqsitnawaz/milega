@@ -1,0 +1,37 @@
+Basic Pages:
+
+1. Homepage (Customer Login)
+    a. navigation bar : top
+    b. sidebar + carousel : middle
+    c. new arrivals
+    d. footer
+
+2. Products Search page (Customer Login)
+    a. navigation bar : top
+    b. filter bar : left
+    c. products list : middle
+    d. next page : bottom
+    e. footer
+
+3. Individual Product page
+    a. navigation bar : top
+    a. pictures middle + sizes : middle
+    b. product details table : bottom
+    c. footer
+
+4. Checkout Page
+    a. navigation bar : top
+    b. form for checkout - personal and shipping details: middle
+    c. footer
+
+5. Sign In and upload Products page
+    a. navigation bar
+    b. upload product (details: size, forms etc) form : middle
+    c. footer
+
+6. Admin's Panel
+    a. navigation bar : top
+    b. view/update orders : right
+    c. browser/update items : middle
+    c. footer
+

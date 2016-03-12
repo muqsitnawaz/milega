@@ -10,7 +10,7 @@
 
   <% @companies.each do |c| %>
     <tr>
-      <td> <%= c.cname %> </td>
+      <td> <%= link_to c.cname, company_path(c) %> </td>
       <td> <%= c.ctype %> </td>
       <td> <%= link_to 'Delete', company_path(c), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
     </tr>

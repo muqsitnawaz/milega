@@ -1,2 +1,26 @@
 <h2> <%= @company.cname %> </h2>
 <hr>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+  </tr>
+
+  <% @products.each do |p| %>
+    <tr>
+      <td> 
+        <%= link_to p.pname, company_product_path(@company, p) %> 
+        <%= link_to 'edit', edit_company_product_path(@company, p) %>
+        <%= link_to 'delete', company_product_path(@company, p), method: :delete, data: { confirm: 'Are you sure?'} %>
+      </td>
+      <td> <%= p.pdescrip %> </td>
+      <td> <%= p.pprice %> </td>
+    </tr>
+  <% end %>
+</table>
+
+
+<br><%= link_to "New Product", new_company_product_path(@company.id) %>
+<br><%= link_to "Back", companies_path %>

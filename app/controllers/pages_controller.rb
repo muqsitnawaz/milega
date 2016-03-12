@@ -4,6 +4,6 @@ class PagesController < ApplicationController
   end
 
   def search
-    
+    @products = Product.where("pname LIKE ?" , "%#{params[:query]}%")
   end
 end

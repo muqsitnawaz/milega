@@ -16,7 +16,12 @@ companies = [
 products = Hash[
     "levis" => [
         {:pname => "Cotton Jeans", :pdescrip => "Cotton Jeans Pants", :pprice => "20"},
-        {:pname => "Denim Jeans", :pdescrip => "Denim Jeans Pants", :pprice => "80"}
+        {:pname => "Denim Jeans", :pdescrip => "Denim Jeans Pants", :pprice => "80"},
+        {:pname => "501 Original Jeans", :pdescrip => "501 Original Shrink-To-Fit Jeans", :pprice => "43"},
+        {:pname => "501 Original Jeans", :pdescrip => "501 Original Fit Jeans", :pprice => "45"},
+        {:pname => "CT Jeans", :pdescrip => "501 CT Jeans", :pprice => "50"},
+        {:pname => "501 Original Selvedge Jeans", :pdescrip => "501 Original Selvedge Jeans for Summer", :pprice => "128"},
+        {:pname => "501 Original Fit Jeans", :pdescrip => "501 Original Fit Torn Jeans for Summer", :pprice => "95"}
     ],
 
     "apple" => [
@@ -33,7 +38,10 @@ products = Hash[
 
     "levis strauss" => [
         {:pname => "Denim Jeans", :pdescrip => "Denim Jeans Pants", :pprice => "70"},
-        {:pname => "T- Shirt", :pdescrip => "Grey t-shirt for Summer", :pprice => "15"}
+        {:pname => "Summer T-Shirt", :pdescrip => "Grey t-shirt for Summer", :pprice => "15"},
+        {:pname => "Summer Denim Shorts", :pdescrip => "Denim Shorts for Summer", :pprice => "18"},
+        {:pname => "Cotton Jeans Shorts", :pdescrip => "Cotton Jeans Shorts for Summer", :pprice => "12"},
+        {:pname => "Denim Shorts", :pdescrip => "Torn Denim Jeans Shorts", :pprice => "20"}
     ]
 ]
 

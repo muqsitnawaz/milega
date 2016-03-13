@@ -18,6 +18,10 @@ class PagesController < ApplicationController
     @order_item = current_order.order_items.new
   end
 
+  def admin
+    @orders = Order.all
+  end
+
   def company_id(comp)
     c = Company.where("cname LIKE ?", "%#{comp}%")
     return c.map {|c| c.id}

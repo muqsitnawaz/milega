@@ -1,0 +1,16 @@
+<h1>Welcome Admin</h1>
+<hr>
+
+<table>
+  <tr>
+    <th>Received at</th>
+    <th>Sub Total</th>
+    <th>Customer name</th>
+    <th>Customer Phone</th>
+    <th>Customer Address</th>
+  </tr>
+  
+  <% @orders.each do |order| %>
+    <%= render "order_row", order: order, ship_detail: ShippingDetail.where(:order_id => order.id).first %>
+  <% end %>
+</table>

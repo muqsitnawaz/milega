@@ -1,0 +1,38 @@
+<p><%= render 'pages/links' %></p>
+
+<%= form_for @ship_detail do |f| %>
+  <% if @ship_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@ship_detail.errors.count, "error") %> prohibited
+        this ship_detail from being saved:
+      </h2>
+      <ul>
+        <% @ship_detail.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :Name %><br>
+    <%= f.text_field :sname %>
+  </p>
+
+  <p>
+    <%= f.label :Phone %><br>
+    <%= f.text_field :sphone %>
+  </p>
+
+  <p>
+    <%= f.label :Address %><br>
+    <%= f.text_field :saddress %>
+  </p>
+
+  <%= f.text_field :order_id, value: current_order.id %>
+
+  <p>
+  <%= f.submit %>
+  </p>
+<% end %>

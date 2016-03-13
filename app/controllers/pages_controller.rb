@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   def search
     query = params[:query]
     comp_ids = company_id query
-    per_page = 10
+    per_page = 9
 
     puts "Comp ids: #{comp_ids}"
 

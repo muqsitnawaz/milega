@@ -1,25 +1,12 @@
 <%= render 'links' %>
 
-<h2>Search Results</h2>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-  </tr>
-
-  <% @products.each do |p| %>
-    <tr>
-      <td> 
-        <%= link_to p.pname, company_product_path(p.company_id, p) %>
-        <i>by <%= Company.find_by_id(p.company_id).cname %></i>
-      </td>
-      <td> <%= p.pdescrip %> </td>
-      <td> <%= p.pprice %>$ </td>
-    </tr>
-  <% end %>
-</table>
-
-<br>
-<%= will_paginate @products %>
+<div class="col-md-12">
+  <center>
+    <h2>Search Results</h2>
+    <div><%= will_paginate @products %></div>
+    
+    <% @products.each do |p| %>
+      <%= render "product_row", product: p, order_item: @order_item %>
+    <% end %>
+  </center>
+</div>

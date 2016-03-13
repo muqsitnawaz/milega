@@ -12,7 +12,7 @@ class OrderItem < ActiveRecord::Base
     if persisted?
       self[:unit_price]
     else
-      product.price
+      product.pprice
     end
   end
 

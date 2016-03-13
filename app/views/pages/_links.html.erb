@@ -1,14 +1,19 @@
-<% if user_signed_in? %>
-  <div id="user-links" style="margin-left:90%;">
-    <p>
-      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-    </p>
+<div>
+  <div class="col-xs-6">
+    <h1><%= link_to "My Store", root_path %></h1>
   </div>
-<% else %>
-  <div id="user-links" style="margin-left:90%;">
-    <p>
-      <%= link_to 'Sign In', new_user_session_path %>
-      <%= link_to 'Register', new_user_registration_path %>
-    </p>
+  <div id="user-links" class="col-xs-6 text-right">
+    <% if user_signed_in? %>
+      <div class="inline" style="margin-left:60%;">
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+      </div>
+    <% else %>
+      <div class="inline" style="margin-left:40%;">
+        <%= link_to 'Sign In', new_user_session_path, class: "btn btn-primary" %>
+        <%= link_to 'Register', new_user_registration_path, class: "btn btn-primary" %>
+      </div>
+
+      <div class="cart-text inline"><%= render 'layouts/cart_text' %></div>
+    <% end %>
   </div>
-<% end %>
+</div>

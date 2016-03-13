@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     resources :products, only: [:show,:new,:create,:edit,:update,:destroy]
   end
 
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
+
   # Example resource route with options:
   #   resources :products do
   #     member do

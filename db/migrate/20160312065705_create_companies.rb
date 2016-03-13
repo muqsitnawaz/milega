@@ -14,6 +14,7 @@ class CreateCompanies < ActiveRecord::Migration
       t.integer :pprice
       t.string :pcategory
       t.string :psubcategory
+      t.boolean :active
 
       t.timestamps
     end

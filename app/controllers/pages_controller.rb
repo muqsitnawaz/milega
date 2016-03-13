@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def welcome
-    
+    # does nothing
   end
 
   def search

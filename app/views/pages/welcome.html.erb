@@ -1,10 +1,12 @@
-<center style="padding-top: 170px;">
+<%= render 'links' %>
+
+<center style="padding-top: 140px;">
   <h1>Welcome to Milega</h1>
 
   <p>Search our store</p>
 
   <%= form_tag("/search", method: "get") do %>
-    <%= text_field_tag :query, nil, :placeholder => "Product or brand..." %>
-    <%= submit_tag("Search") %>
+  <%= text_field_tag :query, nil, :placeholder => "Product or brand..." %>
+  <%= submit_tag("Search") %>
   <% end %>
 </center>

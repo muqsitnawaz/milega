@@ -21,6 +21,8 @@
   <% end %>
 </table>
 
+<br>
+<%= will_paginate @products %>
 
 <br><%= link_to "New Product", new_company_product_path(@company.id) %>
 <br><%= link_to "Back", companies_path %>

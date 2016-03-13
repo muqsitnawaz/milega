@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find_by_id(params[:id])
-    @products = @company.products.all
+    @products = @company.products.paginate(:page => params[:page], :per_page => 5)
   end
 
   def new

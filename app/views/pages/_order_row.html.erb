@@ -3,9 +3,64 @@
     <tr>
       <td> <%= order.created_at %> </td>
       <td> <%= order.subtotal %> </td>
-      <td> <%= ship_detail.sname %> </td>
-      <td> <%= ship_detail.sphone %> </td>
       <td> <%= ship_detail.saddress %> </td>
+      <td> <div id="view-details" class="btn btn-primary">View details</div> </td>
     </tr>
   </div>
 </div>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Order Details</h4>
+      </div>
+      <div class="modal-body">
+        <p><strong>Customer Name: </strong><span id="sname"></span></p>
+        <p><strong>Customer Phone: </strong><span id="sphone"></span></p>
+        <strong>Order Items</strong>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function updateModal(id, data) {
+    $("#"+id+" .modal-body #sname").html(data.sname);
+    $("#"+id+" .modal-body #sphone").html(data.sphone);
+    
+    for (i = 0; i < data.orders.length; i++) {
+      order = data.orders[i]
+      console.log(order);
+    }
+
+
+  }
+
+  $(document).on("click", '#view-details', function() {
+    $.ajax({
+      url: "/order_details",
+      type: "GET",
+      data: { shipping_detail_id: <%= ship_detail.id %> },
+      dataType: "json",
+      complete: function() {},
+      success: function(data, textStatus, xhr) {
+        if (str_equal(data.status, "success")) {
+          updateModal("myModal", data);
+          $("#myModal").modal("show");
+        } else {
+          alert("Record not found!")
+        }
+      },
+      error: function() {
+        alert("Ajax error!")
+      }
+    });
+  });
+</script>

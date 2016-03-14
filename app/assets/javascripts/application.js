@@ -15,3 +15,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+function str_equal(str1, str2) {
+  return (str1.localeCompare(str2) == 0)
+}

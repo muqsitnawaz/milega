@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   get "/search" => 'pages#search'
   get "/admin" => 'pages#admin'
+  get "/order_details" => 'pages#order_details'
 
   #   resources :products
   resources :companies do

@@ -22,6 +22,29 @@ class PagesController < ApplicationController
     @orders = Order.all
   end
 
+  def order_details
+    ship_detail_id = params[:shipping_detail_id]
+    ship_detail = ShippingDetail.find_by_id(ship_detail_id)
+    orders = OrderItem.where(order_id: ship_detail.order_id)
+
+    if !ship_detail.nil?
+      if request.xhr?
+        render :json => {
+          :status => "success",
+          :sname => ship_detail.sname,
+          :sphone => ship_detail.sphone,
+          :orders => orders.as_json
+        }
+      end
+    else
+      if request.xhr?
+        render :json => {
+          :status => "error"
+        }
+      end
+    end
+  end
+
   def company_id(comp)
     c = Company.where("cname LIKE ?", "%#{comp}%")
     return c.map {|c| c.id}

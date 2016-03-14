@@ -1,13 +1,14 @@
 <h1>Welcome Admin</h1>
 <hr>
 
-<table>
+<h3>Showing all Orders</h3>
+
+<table class="table table-hover">
   <tr>
     <th>Received at</th>
     <th>Sub Total</th>
-    <th>Customer name</th>
-    <th>Customer Phone</th>
-    <th>Customer Address</th>
+    <th>Delivery Address</th>
+    <th>View Details</th>
   </tr>
   
   <% @orders.each do |order| %>

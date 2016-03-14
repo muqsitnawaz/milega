@@ -70,6 +70,9 @@ ActiveRecord::Schema.define(version: 20160313215504) do
   add_index "shipping_details", ["order_id"], name: "index_shipping_details_on_order_id"
 
   create_table "users", force: :cascade do |t|
+    t.string   "uname",                  default: "", null: false
+    t.string   "uphone",                 default: "", null: false
+    t.string   "uaddress",               default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

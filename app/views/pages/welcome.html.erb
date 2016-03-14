@@ -6,7 +6,7 @@
   <p>Search our store</p>
 
   <%= form_tag("/search", method: "get") do %>
-  <%= text_field_tag :query, nil, :placeholder => "Product or brand..." %>
+  <%= text_field_tag :query, nil, autofocus: true, placeholder: "Product or brand..." %>
   <%= submit_tag("Search") %>
   <% end %>
 </center>

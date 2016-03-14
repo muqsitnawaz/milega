@@ -10,6 +10,11 @@ class ShippingDetailsController < ApplicationController
 
   def create
     @ship_detail = ShippingDetail.new ship_detail_params
+    @order = Order.find_by_id(@ship_detail.order_id)
+
+    if !@order.nil?
+      @order.update_attributes!(order_status: "confirmed");
+    end
 
     if @ship_detail.save
         flash[:notice] = "Your order has been received"

@@ -3,6 +3,8 @@ class Order < ActiveRecord::Base
   has_one :shipping_detail
   before_save :update_subtotal
 
+  validates :order_status, :inclusion => { :in => %w(new confirmed in-transit sent delivered) }
+
   def subtotal
     order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
   end

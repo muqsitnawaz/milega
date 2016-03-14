@@ -5,6 +5,17 @@
       <td> <%= order.subtotal %> </td>
       <td> <%= ship_detail.saddress %> </td>
       <td> <div id="view-details" class="btn btn-primary">View details</div> </td>
+      <td> 
+        <%= form_for order do |f| %>
+          <div class="input-group">
+            <%= f.select :order_status, ["new", "confirmed", "in-transit", "sent", "delivered"], {}, {class: "form-control"} %>
+            <div class="input-group-btn">
+              <%= f.submit "Update", class: "btn btn-primary" %>
+            </div>
+            <%= f.hidden_field :id, value: order.id %>
+          </div>
+        <% end %>
+      </td>
     </tr>
   </div>
 </div>
@@ -40,6 +51,30 @@
     order_html.innerHTML = "<p><a href=/products/"+order.product_id+">View Product</a>, Unit Price: "+order.unit_price+", Quantity: "+order.quantity+"</p>"
     return order_html
   }
+
+  $("form").submit(function(e){
+    e.preventDefault();
+
+    var ord_select = document.getElementById("order_order_status");
+    var ord_status = ord_select.options[ord_select.selectedIndex].value;
+    var ord_id = document.getElementById("order_id").value;
+
+    $.ajax({
+      url: "/order",
+      type: "PUT",
+      data: { id: ord_id, order_status: ord_status },
+      dataType: "json",
+      complete: function() {},
+      success: function(data, textStatus, xhr) {
+        alert("updated!")
+      },
+      error: function() {
+        alert("Ajax error!")
+      }
+    });
+
+    return false;
+  });
 
   function update_modal(id, data) {
     $("#"+id+" .modal-body #sname").html("").html(data.sname);

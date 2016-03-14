@@ -1,7 +1,7 @@
-<h1>Welcome Admin</h1>
+<h1>Welcome Admin, Message: <div id="flash"></div></h1>
 <hr>
 
-<h3>Showing all Orders</h3>
+<h3>Displaying all Orders</h3>
 
 <table class="table table-hover">
   <tr>
@@ -9,6 +9,7 @@
     <th>Sub Total</th>
     <th>Delivery Address</th>
     <th>View Details</th>
+    <th>Order Status</th>
   </tr>
   
   <% @orders.each do |order| %>

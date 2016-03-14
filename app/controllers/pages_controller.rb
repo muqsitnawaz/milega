@@ -19,7 +19,7 @@ class PagesController < ApplicationController
   end
 
   def admin
-    @orders = Order.all
+    @orders = Order.where.not(order_status: "new")
   end
 
   def order_details

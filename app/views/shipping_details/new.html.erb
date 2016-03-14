@@ -1,52 +1,54 @@
 <p><%= render 'pages/links' %></p>
 
-<p>Please confirm your shipping details</p>
+<h4 style="margin: 1.3%;">Please confirm your shipping details</h4>
 
-<%= form_for @ship_detail, class: "form form-control" do |f| %>
-  <% if @ship_detail.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@ship_detail.errors.count, "error") %> prohibited
-        this ship_detail from being saved:
-      </h2>
-      <ul>
-        <% @ship_detail.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+<div class="col-xs-3">
+  <%= form_for @ship_detail, class: "form" do |f| %>
+    <% if @ship_detail.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@ship_detail.errors.count, "error") %> prohibited
+          this ship_detail from being saved:
+        </h2>
+        <ul>
+          <% @ship_detail.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <p class="form-group">
+      <%= f.label :Name %><br>
+      <% if user_signed_in? %>
+        <%= f.text_field :sname, autofocus: true, value: current_user.uname, class: "form-control" %>
+      <% else %>
+        <%= f.text_field :sname, autofocus: true, class: "form-control" %>
+      <% end %>
+    </p>
+
+    <p>
+      <%= f.label :Phone %><br>
+      <% if user_signed_in? %>
+        <%= f.text_field :sphone, value: current_user.uphone, class: "form-control" %>
+      <% else %>
+        <%= f.text_field :sphone, class: "form-control" %>
+      <% end %>
+    </p>
+
+    <p>
+      <%= f.label :Address %><br>
+      <% if user_signed_in? %>
+        <%= f.text_field :saddress, value: current_user.uaddress, class: "form-control" %>
+      <% else %>
+        <%= f.text_field :saddress, class: "form-control" %>
+      <% end %>
+    </p>
+
+    <%= f.hidden_field :order_id, value: current_order.id %>
+
+    <p>
+    <%= f.submit 'Submit', class: "btn btn-primary" %>
+    </p>
   <% end %>
-
-  <p>
-    <%= f.label :Name %><br>
-    <% if user_signed_in? %>
-      <%= f.text_field :sname, autofocus: true, value: current_user.uname %>
-    <% else %>
-      <%= f.text_field :sname, autofocus: true %>
-    <% end %>
-  </p>
-
-  <p>
-    <%= f.label :Phone %><br>
-    <% if user_signed_in? %>
-      <%= f.text_field :sphone, value: current_user.uphone %>
-    <% else %>
-      <%= f.text_field :sphone %>
-    <% end %>
-  </p>
-
-  <p>
-    <%= f.label :Address %><br>
-    <% if user_signed_in? %>
-      <%= f.text_field :saddress, value: current_user.uaddress %>
-    <% else %>
-      <%= f.text_field :saddress %>
-    <% end %>
-  </p>
-
-  <%= f.hidden_field :order_id, value: current_order.id %>
-
-  <p>
-  <%= f.submit %>
-  </p>
-<% end %>
+</div>

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-7">
       <h4><%= product.pname %></small></h4>
-      <p> <%= product.pdescrip %></p>
+      <p> <%= product.pdescrip %> <%= link_to 'View', product_path(product) %></p>
     </div>
     <div class="col-xs-5">  
       <%= form_for order_item, remote: true do |f| %>

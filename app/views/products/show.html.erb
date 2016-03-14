@@ -1,8 +1,8 @@
-<h2> <%= @product.pname %> </h2>
+<h2> <%= @product.pname %> <i> by <%= @company.cname %> </i></h2>
 <hr>
 
 <p> <%= @product.pdescrip %></p>
 <p> Price: <%= @product.pprice  %>$</p>
 
 <br>
-<%= link_to "Back", company_path(params[:company_id]) %>
+<%= link_to 'Back',request.referer.present? ? request.referer : root_path %>

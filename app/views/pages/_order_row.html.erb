@@ -37,7 +37,7 @@
     console.log(order);
 
     var order_html = document.createElement("DIV");
-    order_html.innerHTML = "<p><a>View Product</a>, Unit Price: "+order.unit_price+", Quantity: "+order.quantity+"</p>"
+    order_html.innerHTML = "<p><a href=/products/"+order.product_id+">View Product</a>, Unit Price: "+order.unit_price+", Quantity: "+order.quantity+"</p>"
     return order_html
   }
 

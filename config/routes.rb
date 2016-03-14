@@ -12,9 +12,10 @@ Rails.application.routes.draw do
 
   #   resources :products
   resources :companies do
-    resources :products, only: [:show,:new,:create,:edit,:update,:destroy]
+    resources :products, only: [:new,:create,:edit,:update,:destroy]
   end
 
+  resources :products, only: [:show]
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
   resources :shipping_details, only: [:new, :create]

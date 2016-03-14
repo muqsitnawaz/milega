@@ -1,5 +1,10 @@
 class ShippingDetailsController < ApplicationController
   def new
+    if user_signed_in?
+      # puts "here"
+      current_order.update_attributes(:user_id => current_user.id)
+    end
+
     @ship_detail = ShippingDetail.new
   end
 

@@ -33,6 +33,9 @@ gem 'devise'                        # for end-users
 gem 'bootstrap-sass', '~> 3.2.0'    # css styling
 gem 'autoprefixer-rails'            # 
 
+gem 'rmagick'                       # image processing
+gem 'carrierwave'                   # image handling
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'

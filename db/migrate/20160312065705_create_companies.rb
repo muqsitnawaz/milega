@@ -16,6 +16,9 @@ class CreateCompanies < ActiveRecord::Migration
       t.string :pcategory
       t.string :psubcategory
       t.boolean :active
+      t.string :image1
+      t.string :image2
+      t.string :image3
 
       t.timestamps
     end

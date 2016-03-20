@@ -7,10 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 companies = [
-    {cname: "Levis", ctype: "Clothing", user_id: 1},
-    {cname: "Apple", ctype: "Electronics", user_id: 1},
+    {cname: "Levis", ctype: "Clothing", user_id: 2},
+    {cname: "Apple", ctype: "Electronics", user_id: 3},
     {cname: "Hermes", ctype: "Clothing", user_id: 2},
-    {cname: "Levis Strauss", ctype: "Clothing", user_id: 3}
+    {cname: "Levis Strauss", ctype: "Clothing", user_id: 2}
 ];
 
 products = Hash[
@@ -57,9 +57,9 @@ users = [
 companies.each do |c|
     comp = Company.create! c
 
-    (products[comp.cname.downcase]).each do |p|
-        comp.products.create p
-    end
+    # (products[comp.cname.downcase]).each do |p|
+    #     comp.products.create p
+    # end
 end
 
 # creating users

@@ -55,6 +55,9 @@ ActiveRecord::Schema.define(version: 20160313215504) do
     t.string   "pcategory"
     t.string   "psubcategory"
     t.boolean  "active"
+    t.string   "image1"
+    t.string   "image2"
+    t.string   "image3"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

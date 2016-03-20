@@ -4,5 +4,8 @@
 <p> <%= @product.pdescrip %></p>
 <p> Price: <%= @product.pprice  %>$</p>
 
+<p> <%= image_tag @product.image1_url(:thumb).to_s %> </p>
+<p> <%= image_tag @product.image2_url.to_s %> </p>
+
 <br>
 <%= link_to 'Back', :back %>

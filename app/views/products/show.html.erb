@@ -4,8 +4,19 @@
 <p> <%= @product.pdescrip %></p>
 <p> Price: <%= @product.pprice  %>$</p>
 
-<p> <%= image_tag @product.image1_url(:thumb).to_s %> </p>
-<p> <%= image_tag @product.image2_url.to_s %> </p>
+<div class="col-xs-12">
+  <div class="col-xs-3">
+    <%= image_tag @product.image1_url.to_s, size: "250x250", class: "img-thumbnail" %> 
+  </div>
+  <div class="col-xs-3">
+    <%= image_tag @product.image2_url.to_s, size: "250x250", class: "img-thumbnail" %> 
+  </div>
+</div>
+<div class="col-xs-12">
+  <div class="col-xs-3">
+    <%= image_tag @product.image3_url.to_s, size: "250x250", class: "img-thumbnail" %>
+  </div>
+</div>
 
 <br>
 <%= link_to 'Back', :back %>

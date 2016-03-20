@@ -19,7 +19,7 @@ class ShippingDetailsController < ApplicationController
     if @ship_detail.save
         flash[:notice] = "Your order has been received"
 
-        reset_session
+        session.delete(:order_id)
         redirect_to root_path
     else
         render 'new'

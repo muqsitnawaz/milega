@@ -5,11 +5,27 @@
 
   <div id="user-links" class="col-xs-6">
     <% if user_signed_in? %>
-      <div class="inline" style="margin-left:40%;">
-        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
-        <div class="cart-text inline"><%= render 'layouts/cart_text' %></div>
-      </div>
-    <% else %>
+      <% if is_admin? %>
+          <div class="inline" style="margin-left:20%;">
+            <div class="btn btn-primary"> <%= current_user.uname %> </div>
+            <%= link_to 'Admin\'s Panel', '/admin', class: "btn btn-primary" %>
+            <%= link_to 'View Companies', '/companies', class: "btn btn-primary" %>
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
+          </div>
+      <% elsif is_company_owner? %>
+        <div class="inline" style="margin-left:45%;">
+          <div class="btn btn-primary"> <%= current_user.uname %> </div>
+          <%= link_to 'View Companies', '/companies', class: "btn btn-primary" %>
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
+        </div>
+      <% else %>
+        <div class="inline" style="margin-left:40%;">
+          <div class="btn btn-primary"> <%= current_user.uname %> </div>
+          <%= link_to 'Admin\'s Panel', '/admin', class: "btn btn-primary" %>
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    <% else %> <!-- user_signed_in -->
       <div class="inline" style="margin-left:40%;">
         <%= link_to 'Sign In', new_user_session_path, class: "btn btn-primary" %>
         <%= link_to 'Register', new_user_registration_path, class: "btn btn-primary" %>

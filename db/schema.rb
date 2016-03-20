@@ -14,11 +14,14 @@
 ActiveRecord::Schema.define(version: 20160313215504) do
 
   create_table "companies", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "cname"
     t.string   "ctype"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "companies", ["user_id"], name: "index_companies_on_user_id"
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "product_id"
@@ -73,6 +76,7 @@ ActiveRecord::Schema.define(version: 20160313215504) do
     t.string   "uname",                  default: "", null: false
     t.string   "uphone",                 default: "", null: false
     t.string   "uaddress",               default: "", null: false
+    t.integer  "user_role",              default: 3,  null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

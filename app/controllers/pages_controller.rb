@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+  before_filter :authenticate_user!, only: [ :admin ]
+  before_filter :ensure_admin!, only: [ :admin ]
+
   def welcome
     # does nothing
   end
@@ -45,8 +48,10 @@ class PagesController < ApplicationController
     end
   end
 
+private
   def company_id(comp)
     c = Company.where("cname LIKE ?", "%#{comp}%")
     return c.map {|c| c.id}
   end
+
 end

@@ -1,6 +1,7 @@
 class CreateCompanies < ActiveRecord::Migration
   def change
     create_table :companies do |t|
+      t.belongs_to :user, index:true
       t.string :cname
       t.string :ctype
 

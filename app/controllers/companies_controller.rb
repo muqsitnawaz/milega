@@ -1,11 +1,25 @@
 class CompaniesController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :ensure_company_owner_or_admin!
+
   def index
-    @companies = Company.all
+    if is_admin?
+      @companies = Company.all
+    else
+      @companies = Company.where(user_id: current_user.id)
+    end
+
+    @companies = @companies.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
     @company = Company.find_by_id(params[:id])
-    @products = @company.products.paginate(:page => params[:page], :per_page => 5)
+
+    if user_owns_company?(@company)
+      @products = @company.products.paginate(:page => params[:page], :per_page => 5)
+    else
+      redirect_with_access_denied
+    end
   end
 
   def new
@@ -24,27 +38,47 @@ class CompaniesController < ApplicationController
 
   def edit
     @company = Company.find_by_id(params[:id])
+
+    if !user_owns_company?(@company)
+      redirect_with_access_denied
+    end
   end
 
   def update
     @company = Company.find_by_id(params[:id])
 
-    if @company.update(company_params)
-        redirect_to companies_path
+    if user_owns_company?(@company)
+      if @company.update(company_params)
+          redirect_to companies_path
+      else
+          render 'edit'
+      end
     else
-        render 'edit'
+      redirect_with_access_denied
     end
   end
 
   def destroy
     @company = Company.find_by_id(params[:id])
-    @company.destroy
 
-    redirect_to companies_path
+    if user_owns_company?(@company)
+      # deleting and redirecting
+      @company.destroy
+      redirect_to companies_path
+    else
+      redirect_with_access_denied
+    end
   end
 
 private
   def company_params
-    params.require(:company).permit(:cname, :ctype)
+    pms = params.require(:company).permit(:cname, :ctype)
+    pms[:user_id] = current_user.id
+    return pms
+  end
+
+  def redirect_with_access_denied
+    flash[:notice] = "ACCESS DENIED"
+    redirect_to companies_path
   end
 end

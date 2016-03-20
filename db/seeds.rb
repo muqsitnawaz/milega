@@ -7,10 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 companies = [
-    {cname: "Levis", ctype: "Clothing"},
-    {cname: "Apple", ctype: "Electronics"},
-    {cname: "Hermes", ctype: "Clothing"},
-    {cname: "Levis Strauss", ctype: "Clothing"}
+    {cname: "Levis", ctype: "Clothing", user_id: 1},
+    {cname: "Apple", ctype: "Electronics", user_id: 1},
+    {cname: "Hermes", ctype: "Clothing", user_id: 2},
+    {cname: "Levis Strauss", ctype: "Clothing", user_id: 3}
 ];
 
 products = Hash[
@@ -45,10 +45,24 @@ products = Hash[
     ]
 ]
 
+
+users = [
+    {uname: "Muqsit Nawaz", email: "muqsitnawaz@gmail.com", password: "M4sk3dv1p3r", password_confirmation: "M4sk3dv1p3r", user_role: 1, uphone: "+923367708020", uaddress: "Chandan Wala, Jhang Saddar"},
+    {uname: "Nofel Yasin", email: "nofelyasin@gmail.com", password: "nofelyasin", password_confirmation: "nofelyasin", user_role: 2, uphone: "+923333347577", uaddress: "DHA, Karachi"},
+    {uname: "Ali Rafiq", email: "alirafiq@yahoo.com", password: "alirafiq", password_confirmation: "alirafiq", user_role: 2, uphone: "+923343359871", uaddress: "DHA, Karachi"}
+]
+
+
+# creating companies and products
 companies.each do |c|
     comp = Company.create! c
 
     (products[comp.cname.downcase]).each do |p|
         comp.products.create p
     end
+end
+
+# creating users
+users.each do |u|
+    user = User.create! u
 end

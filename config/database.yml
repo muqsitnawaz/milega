@@ -1,15 +1,33 @@
-default: &default
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
+# default: &default
+#   adapter: sqlite3
+#   pool: 5
+#   timeout: 5000
+
+# development:
+#   <<: *default
+#   database: db/development.sqlite3
+
+# test:
+#   <<: *default
+#   database: db/test.sqlite3
 
 development:
-  <<: *default
-  database: db/development.sqlite3
-
+  adapter: postgresql
+  database: milega_development
+  host: localhost
+  username: pguser
+  password: M4sk3dv1p3r
+  pool: 5
+  timeout: 5000
 test:
-  <<: *default
-  database: db/test.sqlite3
+  adapter: postgresql
+  database: milega_test
+  host: localhost
+  host: localhost
+  username: pguser
+  password: M4sk3dv1p3r
+  pool: 5
+  timeout: 5000
 
 production:
   adapter: postgresql

@@ -48,9 +48,9 @@ products = Hash[
 
 users = [
     {uname: "Muqsit Nawaz", email: "muqsitnawaz@gmail.com", password: "M4sk3dv1p3r", password_confirmation: "M4sk3dv1p3r", user_role: 1, uphone: "+923367708020", uaddress: "Chandan Wala, Jhang Saddar"},
-    {uname: "Nofel Yasin", email: "nofelyasin@gmail.com", password: "nofelyasin", password_confirmation: "nofelyasin", user_role: 2, uphone: "+923333347577", uaddress: "DHA, Karachi"},
-    {uname: "Ali Rafiq", email: "alirafiq@yahoo.com", password: "alirafiq", password_confirmation: "alirafiq", user_role: 2, uphone: "+923343359871", uaddress: "DHA, Karachi"},
-    {uname: "Shayan Shafi", email: "shayan@live.com", password: "shayanshafi", password_confirmation: "shayanshafi", user_role: 3, uphone: "+923342084026", uaddress: "Sea View, Karachi"}
+    {uname: "Nofel Yasin", email: "nofelyasin@gmail.com", password: "nofelyasin", password_confirmation: "nofelyasin", user_role: 2, uphone: "+923333347577", uaddress: "Gulshan-e-Iqbal, Karachi"},
+    {uname: "Ali Rafiq", email: "alirafiq@yahoo.com", password: "alirafiq", password_confirmation: "alirafiq", user_role: 2, uphone: "+923343359871", uaddress: "Wood Basin, Clifton, Karachi"},
+    {uname: "Shayan Shafi", email: "shayan@live.com", password: "shayanshafi", password_confirmation: "shayanshafi", user_role: 3, uphone: "+923342084026", uaddress: "Lyari, Karachi"}
 ]
 
 

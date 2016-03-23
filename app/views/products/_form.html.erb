@@ -75,15 +75,15 @@
             <%= f.label :Another_Image %><br>
             <%= f.file_field :pimage3 %>
           </div>
-        </div>
-      </div>
 
-      <div>
-        <% if current_page?(:controller => 'products', :action => 'new') %>
-          <%= f.submit 'Create Product', class: "btn btn-default" %>
-        <% elsif current_page?(:controller => 'products', :action => 'edit') %>
-          <%= f.submit 'Update Product', class: "btn btn-default" %>
-        <% end %>
+          <div style="margin-top: 12%;">
+            <% if current_page?(:controller => 'products', :action => 'new') %>
+              <%= f.submit 'Create Product', class: "btn btn-default" %>
+            <% elsif current_page?(:controller => 'products', :action => 'edit') %>
+              <%= f.submit 'Update Product', class: "btn btn-default" %>
+            <% end %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>

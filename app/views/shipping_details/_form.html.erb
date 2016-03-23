@@ -1,0 +1,53 @@
+<%= form_for @ship_detail, class: "form" do |f| %>
+  <% if @ship_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@ship_detail.errors.count, "error") %>:
+      </h2>
+      <ul style="list-style-type: circle;">
+        <% @ship_detail.errors.full_messages.each do |msg| %>
+          <li><%= msg[1..(msg.length - 1)] %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p class="form-group">
+    <%= f.label :Name %><br>
+    <%= f.text_field :sname, class: "form-control", autofocus: true, value: (current_user.nil? ? "" : current_user.uname), placeholder: "Your full name"  %>
+  </p>
+
+  <%= label_tag(:sgender_m, "Male") %>
+  <%= radio_button_tag(:sgender, "m", checked: true) %>
+
+  <%= label_tag(:sgender_f, "Female") %>
+  <%= radio_button_tag(:sgender, "f") %>
+  
+  <%= label_tag(:sgender_o, "Other") %>
+  <%= radio_button_tag(:sgender, "o") %>
+
+  <div class="form-group">
+    <%= f.label :Email_Address %><br>
+    <%= f.email_field :semail, class: "form-control", value: (current_user.nil? ? "" : current_user.email), placeholder: "Your email address", maxlenght: 10  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :Phone %><br>
+    <%= f.text_field :sphone, class: "form-control", value: (current_user.nil? ? "" : current_user.uphone), placeholder: "092 300 3000000"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :Shipping_Address %><br>
+    <%= f.text_area :saddress, class: "form-control", placeholder: "Your shipping address", maxlenght: 10  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :State %><br>
+    <%= f.select :sstate, %w(Punjab Sindh KPK NWFP Balochistan Kashmir), { :include_blank => false }, { class: "form-control" }  %>
+  </div>
+  <%= f.hidden_field :order_id, value: current_order.id %>
+
+  <p>
+    <%= f.submit 'Submit', class: "btn btn-default" %>
+  </p>
+<% end %>

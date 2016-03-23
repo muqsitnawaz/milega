@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_owns_company?(company)
-    if company.user_id == current_user.id
+    if (company.user_id == current_user.id || current_user.user_role == 1)
       true
     else
       false

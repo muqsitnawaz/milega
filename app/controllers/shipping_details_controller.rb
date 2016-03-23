@@ -1,4 +1,6 @@
 class ShippingDetailsController < ApplicationController
+  before_filter :order_not_empty!
+
   def new
     if user_signed_in?
       current_order.update_attributes(:user_id => current_user.id)
@@ -27,6 +29,15 @@ class ShippingDetailsController < ApplicationController
 
 private
   def ship_detail_params
-    params.require(:shipping_detail).permit(:order_id,:sname,:sphone,:saddress)
+    params.require(:shipping_detail).permit(:order_id, :sname, :sgender, :semail, :sphone, :saddress, :sstate)
+  end
+
+  def order_not_empty!
+    if current_order.order_items.size == 0 
+      flash[:notice] = "You need to make a purchase first!"
+      redirect_to root_path
+
+      return false
+    end
   end
 end

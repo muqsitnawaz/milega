@@ -4,9 +4,9 @@
       <td> <%= order.created_at %> </td>
       <td> <%= order.subtotal %> </td>
       <td> <%= ship_detail.saddress %> </td>
-      <td> <div id="view-details" class="btn btn-primary">View details</div> </td>
+      <td> <div id="detail_<%= ship_detail.id %>" class="btn btn-primary" onclick="fetch_detail(this)">View details</div> </td>
       <td> 
-        <%= form_for order do |f| %>
+        <%= form_for order, :html => { :onsubmit => 'event.preventDefault(); test(this);' } do |f| %>
           <div class="input-group">
             <%= f.select :order_status, ["new", "confirmed", "in-transit", "sent", "delivered"], {}, {class: "form-control"} %>
             <div class="input-group-btn">
@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<div id="myModal" class="modal fade" role="dialog">
+<div id="detail_modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
@@ -42,74 +42,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-  function create_order_html(order) {
-    console.log(order);
-
-    var order_html = document.createElement("DIV");
-    order_html.innerHTML = "<p><a href=/products/"+order.product_id+">View Product</a>, Unit Price: "+order.unit_price+", Quantity: "+order.quantity+"</p>"
-    return order_html
-  }
-
-  $("form").submit(function(e){
-    e.preventDefault();
-
-    var ord_select = document.getElementById("order_order_status");
-    var ord_status = ord_select.options[ord_select.selectedIndex].value;
-    var ord_id = document.getElementById("order_id").value;
-
-    $.ajax({
-      url: "/order",
-      type: "PUT",
-      data: { id: ord_id, order_status: ord_status },
-      dataType: "json",
-      complete: function() {},
-      success: function(data, textStatus, xhr) {
-        alert("updated!")
-      },
-      error: function() {
-        alert("Ajax error!")
-      }
-    });
-
-    return false;
-  });
-
-  function update_modal(id, data) {
-    $("#"+id+" .modal-body #sname").html("").html(data.sname);
-    $("#"+id+" .modal-body #sphone").html("").html(data.sphone);
-    $("#"+id+" .modal-body #orders").html("")
-
-    grand_total = 0;
-    for (i = 0; i < data.orders.length; i++) {
-      order = data.orders[i]
-      grand_total += Number(order.total_price);
-
-      $("#"+id+" .modal-body #orders").append(create_order_html(order))
-    }
-
-    $("#"+id+" .modal-body #gtotal").html(grand_total);
-  }
-
-  $(document).on("click", '#view-details', function() {
-    $.ajax({
-      url: "/order_details",
-      type: "GET",
-      data: { shipping_detail_id: <%= ship_detail.id %> },
-      dataType: "json",
-      complete: function() {},
-      success: function(data, textStatus, xhr) {
-        if (str_equal(data.status, "success")) {
-          update_modal("myModal", data);
-          $("#myModal").modal("show");
-        } else {
-          alert("Record not found!")
-        }
-      },
-      error: function() {
-        alert("Ajax error!")
-      }
-    });
-  });
-</script>

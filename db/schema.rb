@@ -76,8 +76,11 @@ ActiveRecord::Schema.define(version: 20160313215504) do
   create_table "shipping_details", force: :cascade do |t|
     t.integer  "order_id"
     t.string   "sname"
+    t.string   "sgender"
+    t.string   "semail"
     t.string   "sphone"
     t.string   "saddress"
+    t.string   "sstate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

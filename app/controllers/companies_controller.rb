@@ -30,9 +30,9 @@ class CompaniesController < ApplicationController
     @company = Company.new company_params
 
     if @company.save
-        redirect_to companies_path
+      redirect_to companies_path
     else
-        render 'new'
+      render 'new'
     end
   end
 
@@ -49,9 +49,9 @@ class CompaniesController < ApplicationController
 
     if user_owns_company?(@company)
       if @company.update(company_params)
-          redirect_to companies_path
+        redirect_to companies_path
       else
-          render 'edit'
+        render 'edit'
       end
     else
       redirect_with_access_denied
@@ -62,7 +62,6 @@ class CompaniesController < ApplicationController
     @company = Company.find_by_id(params[:id])
 
     if user_owns_company?(@company)
-      # deleting and redirecting
       @company.destroy
       redirect_to companies_path
     else

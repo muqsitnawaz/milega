@@ -11,7 +11,7 @@
     </div>
     <div class="col-xs-5" style="margin-top: 3.3em;">  
       <%= form_for order_item, remote: true do |f| %>
-      <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency product.pprice %></span></h4>
+      <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency(product.pprice, unit: "Rs") %></span></h4>
         <div class="input-group">
           <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
           <div class="input-group-btn">

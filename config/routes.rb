@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resource :order, only: [:update]
   resources :order_items, only: [:create, :update, :destroy]
   resources :shipping_details, only: [:new, :create]
+  get "/shipping_details" => 'shipping_details#new'
 
   # Example resource route with options:
   #   resources :products do

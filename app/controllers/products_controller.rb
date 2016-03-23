@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     @cat_hash = get_categories_detail
     @company = Company.find_by_id(params[:company_id])
 
-    if user_owns_company?(@company)
+    if user_owns_company?(@company) && !is_admin?
       @product = Product.new
     else
       redirect_with_access_denied
@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
   def create
     @company = Company.find_by_id(params[:company_id])
 
-    if user_owns_company?(@company)
+    if user_owns_company?(@company) && !is_admin?
       @product = @company.products.new product_params(@company)
 
       if @product.save
@@ -35,6 +35,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @cat_hash = get_categories_detail
     @company = Company.find_by_id(params[:company_id])
 
     if user_owns_company?(@company)

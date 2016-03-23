@@ -1,49 +1,158 @@
-<%= form_for [@company, @product], :html => {:multipart => true} do |f| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@product.errors.count, "error") %> prohibited
-        this product from being saved:
-      </h2>
-      <ul>
-        <% @product.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+<div class="row">
+  <div class="col-xs-12">
+    <%= form_for [@company, @product], :html => {:multipart => true} do |f| %>
+      <% if @product.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@product.errors.count, "error") %> prohibited
+            this product from being saved:
+          </h2>
+          <ul>
+            <% @product.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group">
+            <%= f.label :Category %><br>
+            <%= f.select :pcategory, @cat_hash.keys, { :include_blank => false }, {class: "form-control", onchange: "change_sub_category();"} %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :Sub_category %><br>
+            <%= f.select :psubcategory, @cat_hash.values[0].keys, { :include_blank => false }, {class: "form-control", onchange: "change_detail_category();"}  %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :Detail_category %><br>
+            <%= f.select :pdetailcategory, @cat_hash.values[0].values[0],  { :include_blank => false }, {class: "form-control"}  %>
+          </div>
+          
+
+          <div class="form-group">
+            <%= f.label :Name %><br>
+            <%= f.text_field :pname, class: "form-control", placeholder: "Product's name" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :Description %><br>
+            <%= f.text_field :pdescrip, class: "form-control", placeholder: "Minimum five words" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :Size %><br>
+            <%= f.select :psize, get_sizes, { :include_blank => false }, {class: "form-control"}  %>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="form-group">
+            <%= f.label :Price %><br>
+            <%= f.text_field :pprice, class: "form-control", placeholder: "Rs. "  %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :In_Stock %><br>
+            <%= f.text_field :pstock, class: "form-control", type: "number", value: 1, min: 1  %>
+          </div>
+
+          <br>
+          <div class="form-group">
+            <%= f.label :Main_Image %><br>
+            <%= f.file_field :pimage1 %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :Other_Image %><br>
+            <%= f.file_field :pimage2 %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :Another_Image %><br>
+            <%= f.file_field :pimage3 %>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <% if current_page?(:controller => 'products', :action => 'new') %>
+          <%= f.submit 'Create Product', class: "btn btn-default" %>
+        <% elsif current_page?(:controller => 'products', :action => 'edit') %>
+          <%= f.submit 'Update Product', class: "btn btn-default" %>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-  <p>
-  <%= f.label :Name %><br>
-  <%= f.text_field :pname %>
-  </p>
+<script>
+  function change_sub_category() {
+    var selectBox = document.getElementById("product_pcategory");
+    var categoryVal = selectBox.options[selectBox.selectedIndex].value;
 
-  <p>
-  <%= f.label :Description %><br>
-  <%= f.text_field :pdescrip %>
-  </p>
+    $.ajax({
+      url: "/sub_categories",
+      type: "GET",
+      data: { category: categoryVal },
+      dataType: "json",
+      complete: function() {},
+      success: function(data, textStatus, xhr) {
+        var sub_categories = data.sub_categories;
+        var subCategorySelectBox = document.getElementById("product_psubcategory");
 
-  <p>
-  <%= f.label :Price %><br>
-  <%= f.text_field :pprice %>
-  </p>
+        $("#product_psubcategory").empty();
 
-  <p>
-    <%= f.label :Main_Image %><br>
-    <%= f.file_field :image1 %>
-  </p>
+        for (var i = 0; i < sub_categories.length; i++)  {
+          var opt = document.createElement("option");
+          opt.value = sub_categories[i];
+          opt.textContent = sub_categories[i];
+          subCategorySelectBox.appendChild(opt);
+        }
 
-  <p>
-    <%= f.label :Other_Image %><br>
-    <%= f.file_field :image2 %>
-  </p>
-  
-  <p>
-    <%= f.label :Another_Image %><br>
-    <%= f.file_field :image3 %>
-  </p>
+        change_detail_category();
+      },
+      error: function() {
+        alert("An error occurred! Please refresh");
+      }
+    });
+  }
 
-  <p>
-  <%= f.submit %>
-  </p>
-<% end %>
+  function change_detail_category() {
+    var category_select_box = document.getElementById("product_pcategory");
+    var category_val = category_select_box.options[category_select_box.selectedIndex].value;
+    var sub_category_box = document.getElementById("product_psubcategory");
+    var sub_category_val = sub_category_box.options[sub_category_box.selectedIndex].value;
+    
+    console.log("Category: " + category_val);
+    console.log("Sub-category: " + sub_category_val);
+
+    $.ajax({
+      url: "/detail_categories",
+      type: "GET",
+      data: { category: category_val, sub_category: sub_category_val },
+      dataType: "json",
+      complete: function() {},
+      success: function(data, textStatus, xhr) {
+        var detail_categories = data.detail_categories;
+
+        var detail_category_selectBox = document.getElementById("product_pdetailcategory");
+
+        $("#product_pdetailcategory").empty();
+
+        for (var i = 0; i < detail_categories.length; i++)  {
+          var opt = document.createElement("option");
+          opt.value = detail_categories[i];
+          opt.textContent = detail_categories[i];
+          detail_category_selectBox.appendChild(opt);
+        }
+      },
+      error: function() {
+        alert("An error occurred! Please refresh");
+      }
+    });
+  }
+</script>

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get "/search" => 'pages#search'
   get "/admin" => 'pages#admin'
   get "/order_details" => 'pages#order_details'
+  get "/sub_categories" => 'products#sub_categories'
+  get "/detail_categories" => 'products#detail_categories'
 
   #   resources :products
   resources :companies do

@@ -1,29 +1,55 @@
-<%= form_for @company do |f| %>
-  <% if @company.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@company.errors.count, "error") %> prohibited
-        this company from being saved:
-      </h2>
-      <ul>
-        <% @company.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="row">
+  <div class="col-xs-12">
+    <%= form_for @company do |f| %>
+      <% if @company.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@company.errors.count, "error") %> prohibited
+            this company from being saved:
+          </h2>
+          <ul>
+            <% @company.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <p>
-  <%= f.label :Name %><br>
-  <%= f.text_field :cname %>
-  </p>
+      <div class="form-group">
+        <%= f.label :Name %><br>
+        <%= f.text_field :cname, autofocus: true, placeholder: "Company's official name", class: "form-control" %>
+      </div>
 
-  <p>
-  <%= f.label :Type %><br>
-  <%= f.text_field :ctype %>
-  </p>
+      <div class="form-group">
+        <%= f.label :Type %><br>
+        <%= f.select :ctype, get_ctypes, { :include_blank => false }, {class: "form-control"}  %>
+      </div>
 
-  <p>
-  <%= f.submit %>
-  </p>
-<% end %>
+      <div class="form-group">
+        <%= f.label :Address %><br>
+        <%= f.text_field :caddress, placeholder: "City, Country", class: "form-control", maxlength: "30"  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :Office_phone %><br>
+        <%= f.text_field :cphone_official, placeholder: "Landline with country code", class: "form-control", maxlength: "20"  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :Personal_phone %><br>
+        <%= f.text_field :cphone_personal, placeholder: "Mobile with country code", class: "form-control", maxlength: "20"  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :Companys_Logo %><br>
+        <%= f.file_field :clogo %>
+      </div>
+
+      <% if current_page?(:controller => 'companies', :action => 'new') %>
+        <%= f.submit 'Create Company', class: "btn btn-default" %>
+      <% elsif current_page?(:controller => 'companies', :action => 'edit') %>
+        <%= f.submit 'Update Company', class: "btn btn-default" %>
+      <% end %>
+    <% end %> <!-- end of form -->
+  </div>
+</div>

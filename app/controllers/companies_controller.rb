@@ -72,7 +72,7 @@ class CompaniesController < ApplicationController
 
 private
   def company_params
-    pms = params.require(:company).permit(:cname, :ctype)
+    pms = params.require(:company).permit(:cname, :ctype, :caddress, :cphone_official, :cphone_personal, :clogo)
     pms[:user_id] = current_user.id
     return pms
   end

@@ -1,25 +1,27 @@
-<h2> <%= current_user.uname %>'s Companies Index</h2>
-<hr>
+<div class="company-margin">
+  <h2> <%= current_user.uname %>'s Companies Index</h2>
+  <hr>
 
-<center> <%= will_paginate @companies %> </center>
-<table class="table table-hover">
-  <tr>
-    <th>Name</th>
-    <th>Type</th>
-    <th>Delete</th>
-  </tr>
-
-  <% @companies.each do |c| %>
+  <center> <%= will_paginate @companies %> </center>
+  <table class="table table-hover">
     <tr>
-      <td> 
-        <%= link_to c.cname, company_path(c) %>
-        <%= link_to 'edit', edit_company_path(c) %>
-      </td>
-      <td> <%= c.ctype %> </td>
-      <td> <%= link_to 'Delete', company_path(c), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Delete</th>
     </tr>
-  <% end %>
-</table>
 
-<br>
-<%= link_to 'New Company', new_company_path %>
+    <% @companies.each do |c| %>
+      <tr>
+        <td> 
+          <%= link_to c.cname, company_path(c) %>
+          <%= link_to 'edit', edit_company_path(c) %>
+        </td>
+        <td> <%= c.ctype %> </td>
+        <td> <%= link_to 'Delete', company_path(c), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <br>
+  <%= link_to 'New Company', new_company_path %>
+</div>

@@ -1,22 +1,28 @@
-<h2> <%= @product.pname %> <i> by <%= @company.cname %> </i></h2>
-<hr>
-
-<p> <%= @product.pdescrip %></p>
-<p> Price: <%= @product.pprice  %>$</p>
-
-<div class="col-xs-12">
-  <div class="col-xs-3">
-    <%= image_tag @product.image1_url.to_s, size: "250x250", class: "img-thumbnail" %> 
+<div class="product-margin">
+  <div class="row">
+    <div class="col-xs-4">
+      <p> <%= image_tag @company.clogo_url(:bigthumb).to_s %> </p>
+    </div>
   </div>
-  <div class="col-xs-3">
-    <%= image_tag @product.image2_url.to_s, size: "250x250", class: "img-thumbnail" %> 
+  <hr>
+
+  <p> <%= @product.pdescrip %></p>
+  <p> Price: <%= @product.pprice  %>$</p>
+
+  <div class="col-xs-12">
+    <div class="col-xs-3">
+      <%= image_tag @product.pimage1_url.to_s, size: "250x250", class: "img-thumbnail" %> 
+    </div>
+    <div class="col-xs-3">
+      <%= image_tag @product.pimage2_url.to_s, size: "250x250", class: "img-thumbnail" %> 
+    </div>
   </div>
+  <div class="col-xs-12">
+    <div class="col-xs-3">
+      <%= image_tag @product.pimage3_url.to_s, size: "250x250", class: "img-thumbnail" %>
+    </div>
+  </div>
+
+  <br>
+  <%= link_to 'Back', :back %>
 </div>
-<div class="col-xs-12">
-  <div class="col-xs-3">
-    <%= image_tag @product.image3_url.to_s, size: "250x250", class: "img-thumbnail" %>
-  </div>
-</div>
-
-<br>
-<%= link_to 'Back', :back %>

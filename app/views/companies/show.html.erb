@@ -1,28 +1,40 @@
-<h2> <%= @company.cname %> </h2>
-<hr>
+<div class="company-margin">
+  <div class="row">
+    <div class="col-xs-4">
+      <p> <%= image_tag @company.clogo_url(:largethumb).to_s %> </p>
+    </div>
 
-<table class="table table-hover">
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-  </tr>
+    <div class="col-xs-8">
+      <br><br><br><br>
+      <i> <%= @company.ctype %> </i>
+      <p> Based in <i> <%= @company.caddress %> </i> </p>
+    </div>
+  </div>
+  <hr>
 
-  <% @products.each do |p| %>
+  <table class="table table-hover">
     <tr>
-      <td> 
-        <%= link_to p.pname, product_path(p) %> 
-        <%= link_to 'edit', edit_company_product_path(@company, p) %>
-        <%= link_to 'delete', company_product_path(@company, p), method: :delete, data: { confirm: 'Are you sure?'} %>
-      </td>
-      <td> <%= p.pdescrip %> </td>
-      <td> <%= p.pprice %> </td>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
     </tr>
-  <% end %>
-</table>
 
-<br>
-<%= will_paginate @products %>
+    <% @products.each do |p| %>
+      <tr>
+        <td> 
+          <%= link_to p.pname, product_path(p) %> 
+          <%= link_to 'edit', edit_company_product_path(@company, p) %>
+          <%= link_to 'delete', company_product_path(@company, p), method: :delete, data: { confirm: 'Are you sure?'} %>
+        </td>
+        <td> <%= p.pdescrip %> </td>
+        <td> <%= p.pprice %> </td>
+      </tr>
+    <% end %>
+  </table>
 
-<br><%= link_to "New Product", new_company_product_path(@company.id) %>
-<br><%= link_to "Back", companies_path %>
+  <br>
+  <%= will_paginate @products %>
+
+  <br><%= link_to "New Product", new_company_product_path(@company.id) %>
+  <br><%= link_to "Back", companies_path %>
+</div>

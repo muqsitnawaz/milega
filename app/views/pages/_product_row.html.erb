@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-7">
       <div class="thumbnail">
-        <%= image_tag product.image1_url(:thumb).to_s %>
+        <%= image_tag product.pimage1_url(:thumb).to_s %>
         <div class="caption">
           <p><%= product.pname %></p>
           <p><%= product.pdescrip %> <%= link_to 'View', product_path(product) %></p>

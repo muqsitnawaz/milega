@@ -55,13 +55,13 @@ users = [
 
 
 # creating companies and products
-companies.each do |c|
-    comp = Company.create! c
+# companies.each do |c|
+#     comp = Company.create! c
 
-    # (products[comp.cname.downcase]).each do |p|
-    #     comp.products.create p
-    # end
-end
+#     # (products[comp.cname.downcase]).each do |p|
+#     #     comp.products.create p
+#     # end
+# end
 
 # creating users
 users.each do |u|

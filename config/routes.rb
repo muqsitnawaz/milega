@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get "/search" => 'pages#search'
   get "/admin" => 'pages#admin'
   get "/order_details" => 'pages#order_details'
+  
+  get "/excel", to: 'pages#excel', as: 'excel'
+  get "/excel_download", to: 'pages#excel_download', as: 'excel_download'
+
   get "/sub_categories" => 'products#sub_categories'
   get "/detail_categories" => 'products#detail_categories'
 

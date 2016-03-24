@@ -1,0 +1,46 @@
+<div class="form-margin">
+  <h1>Download Order Page [Admin Only]</h1>
+  <hr>
+
+  <h3>Please input the following details to download data</h3>
+  <i>It might take a minute to prepare your file</i>
+  <br>
+  <br>
+
+  <div class="col-xs-5" style="margin-left: -1.5%;">
+    <%= form_tag("/excel_download", method: "get") do %>
+      <div class="form-group">
+        <%= label_tag(:demail, "Email") %>
+        <%= email_field :demail, nil, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag(:dpass, "Password") %>
+        <%= password_field_tag :dpass, nil, class: "form-control", hidden: true %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag(:dtime_start, "Time Period: From") %>
+        <p>
+          <%= date_select :date, :dtime_start , html: {class: "form-control"} %>
+        </p>
+      </div>
+
+
+      <div class="form-group">
+        <%= label_tag(:dtime_end, "Time Period: To") %>
+        <p>
+          <%= date_select :date, :dtime_end , html: {class: "form-control"} %>
+        </p>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag(:dtype, "Type of Orders") %>
+        <%= text_field_tag :dtype, nil, class: "form-control" %>
+      </div>
+      
+      <%= submit_tag "Download", class: "btn btn-default" %>
+    <% end %>
+  </div>
+
+</div>

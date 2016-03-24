@@ -29,7 +29,9 @@ class ShippingDetailsController < ApplicationController
 
 private
   def ship_detail_params
-    params.require(:shipping_detail).permit(:order_id, :sname, :sgender, :semail, :sphone, :saddress, :sstate)
+    pms = params.require(:shipping_detail).permit(:order_id, :sname, :semail, :sphone, :saddress, :sstate)
+    pms[:sgender] = params[:sgender]
+    return pms
   end
 
   def order_not_empty!

@@ -16,9 +16,10 @@
   <table class="table table-hover">
     <tr>
       <th>Index</th>
-      <th> <%= link_to("Name", companies_path(@company.id), class: (@sort_by == "pname"? '': '') ) %> </th>
+      <th> <%= link_to("Name", company_path(@company, :sort_by => "pname"), class: (@sort_by == "pname"? 'underline': '') ) %> </th>
       <th>Description</th>
-      <th> <%= link_to("Price", companies_path(@company), class: (@sort_by == "pprice"? '': '') ) %> </th>
+      <th> <%= link_to("Price", company_path(@company, :sort_by => "pprice"), class: (@sort_by == "pprice"? 'underline': '') ) %> </th>
+      <th> Delete </th>
     </tr>
   
     <% index = 1 %>
@@ -32,6 +33,7 @@
         </td>
         <td> <%= p.pdescrip %> </td>
         <td> <%= p.pprice %> </td>
+        <td> <%= link_to 'Delete', product_path(@company, p), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
       </tr>
 
       <% index += 1 %>

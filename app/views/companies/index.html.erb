@@ -6,9 +6,9 @@
   <table class="table table-hover">
     <tr>
       <th>Index</th>
-      <th> <%= link_to("Name", companies_path(:sort_by => "cname"), class: (@sort_by == "cname"? '': '') ) %> </th>
-      <th> <%= link_to("Type", companies_path(:sort_by => "ctype"), class: (@sort_by == "ctype"? '': '') ) %> </th>
-      <th>Delete</th>
+      <th> <%= link_to("Name", companies_path(:sort_by => "cname"), class: (@sort_by == "cname"? 'underline': '') ) %> </th>
+      <th> <%= link_to("Type", companies_path(:sort_by => "ctype"), class: (@sort_by == "ctype"? 'underline': '') ) %> </th>
+      <th> Delete </th>
     </tr>
 
     <% index = 1 %>

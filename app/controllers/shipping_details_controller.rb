@@ -19,6 +19,7 @@ class ShippingDetailsController < ApplicationController
 
     if @ship_detail.save
         flash[:notice] = "Your order has been received"
+        Usermailer.orderreceived_email(@ship_detail).deliver
 
         session.delete(:order_id)
         redirect_to root_path

@@ -3,20 +3,32 @@ class CompaniesController < ApplicationController
   before_filter :ensure_company_owner_or_admin!
 
   def index
+    @sort_by = params[:sort_by]
+
+    if @sort_by.nil?
+      @sort_by = :cname
+    end
+
     if is_admin?
-      @companies = Company.all
+      @companies = Company.all.order(@sort_by)
     else
-      @companies = Company.where(user_id: current_user.id)
+      @companies = Company.where(user_id: current_user.id).order(@sort_by)
     end
 
     @companies = @companies.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
+    @sort_by = params[:sort_by]
+
+    if @sort_by.nil?
+      @sort_by = :pname
+    end
+
     @company = Company.find_by_id(params[:id])
 
     if user_owns_company?(@company)
-      @products = @company.products.paginate(:page => params[:page], :per_page => 5)
+      @products = @company.products.order(@sort_by).paginate(:page => params[:page], :per_page => 8)
     else
       redirect_with_access_denied
     end
@@ -32,7 +44,7 @@ class CompaniesController < ApplicationController
     if @company.save
       redirect_to companies_path
     else
-      render 'new'
+      render 'companies/new'
     end
   end
 
@@ -71,7 +83,7 @@ class CompaniesController < ApplicationController
 
 private
   def company_params
-    pms = params.require(:company).permit(:cname, :ctype, :caddress, :cphone_official, :cphone_personal, :clogo)
+    pms = params.require(:company).permit(:cname, :ctype, :caddress, :cemail, :cphone_official, :cphone_personal, :clogo)
     pms[:user_id] = current_user.id
     return pms
   end

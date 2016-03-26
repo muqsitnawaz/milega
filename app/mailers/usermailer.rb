@@ -1,5 +1,5 @@
-class Usermailer < ApplicationMailer
-  default from: "notification@milega.com"
+class Usermailer < ActionMailer::Base
+  default from: "aheediscartoon@gmail.com"
 
   def orderreceived_email(ship_detail)
     @ship_detail = ship_detail

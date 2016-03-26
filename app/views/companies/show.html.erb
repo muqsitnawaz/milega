@@ -12,15 +12,19 @@
   </div>
   <hr>
 
+  <center> <%= will_paginate @products %> </center>
   <table class="table table-hover">
     <tr>
-      <th>Name</th>
+      <th>Index</th>
+      <th> <%= link_to("Name", companies_path(@company.id), class: (@sort_by == "pname"? '': '') ) %> </th>
       <th>Description</th>
-      <th>Price</th>
+      <th> <%= link_to("Price", companies_path(@company), class: (@sort_by == "pprice"? '': '') ) %> </th>
     </tr>
-
+  
+    <% index = 1 %>
     <% @products.each do |p| %>
       <tr>
+        <td><%= index %></td>
         <td> 
           <%= link_to p.pname, product_path(p) %> 
           <%= link_to 'edit', edit_company_product_path(@company, p) %>
@@ -29,11 +33,12 @@
         <td> <%= p.pdescrip %> </td>
         <td> <%= p.pprice %> </td>
       </tr>
+
+      <% index += 1 %>
     <% end %>
   </table>
 
   <br>
-  <%= will_paginate @products %>
 
   <br><%= link_to "New Product", new_company_product_path(@company.id) %>
   <br><%= link_to "Back", companies_path %>

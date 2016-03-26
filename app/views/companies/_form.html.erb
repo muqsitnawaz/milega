@@ -4,8 +4,7 @@
       <% if @company.errors.any? %>
         <div id="error_explanation">
           <h2>
-            <%= pluralize(@company.errors.count, "error") %> prohibited
-            this company from being saved:
+            <%= pluralize(@company.errors.count, "error") %> :
           </h2>
           <ul>
             <% @company.errors.full_messages.each do |msg| %>
@@ -31,13 +30,18 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :Office_email %><br>
+        <%= f.text_field :cemail, placeholder: "Your companys email", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :Office_phone %><br>
-        <%= f.text_field :cphone_official, placeholder: "Landline with country code", class: "form-control", maxlength: "20"  %>
+        <%= f.text_field :cphone_official, placeholder: "Landline with country code", class: "form-control", maxlength: "15"  %>
       </div>
 
       <div class="form-group">
         <%= f.label :Personal_phone %><br>
-        <%= f.text_field :cphone_personal, placeholder: "Mobile with country code", class: "form-control", maxlength: "20"  %>
+        <%= f.text_field :cphone_personal, placeholder: "Mobile with country code", class: "form-control", maxlength: "15"  %>
       </div>
 
       <div class="form-group">
@@ -45,11 +49,7 @@
         <%= f.file_field :clogo %>
       </div>
 
-      <% if current_page?(:controller => 'companies', :action => 'new') %>
-        <%= f.submit 'Create Company', class: "btn btn-default" %>
-      <% elsif current_page?(:controller => 'companies', :action => 'edit') %>
-        <%= f.submit 'Update Company', class: "btn btn-default" %>
-      <% end %>
+      <%= f.submit nil, class: "btn btn-default" %>
     <% end %> <!-- end of form -->
   </div>
 </div>

@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    @cat_hash = get_categories_detail
     @company = Company.find_by_id(params[:company_id])
 
     if user_owns_company?(@company) && !is_admin?
@@ -46,6 +47,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @cat_hash = get_categories_detail
     @company = Company.find_by_id(params[:company_id])
 
     if user_owns_company?(@company)

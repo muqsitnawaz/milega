@@ -94,7 +94,7 @@ class PagesController < ApplicationController
 
 private
   def company_id(comp)
-    c = Company.where("cname LIKE ?", "%#{comp}%")
+    c = Company.where("cname iLIKE ?", "%#{comp}%")
     return c.map {|c| c.id}
   end
 

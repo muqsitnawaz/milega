@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160313215504) do
     t.string   "cname"
     t.string   "ctype"
     t.string   "caddress"
+    t.string   "cemail"
     t.string   "cphone_official"
     t.string   "cphone_personal"
     t.string   "clogo"

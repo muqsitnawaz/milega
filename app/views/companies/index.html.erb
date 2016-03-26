@@ -1,5 +1,5 @@
 <div class="company-margin">
-  <h2> <%= current_user.uname %>'s Companies</h2>
+  <h2> <%= current_user.uname %>'s Companies <%= is_admin? ? "[Admin]" : "" %></h2>
   <hr>
 
   <center> <%= will_paginate @companies %> </center>

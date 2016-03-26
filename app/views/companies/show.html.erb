@@ -33,7 +33,7 @@
         </td>
         <td> <%= p.pdescrip %> </td>
         <td> <%= p.pprice %> </td>
-        <td> <%= link_to 'Delete', product_path(@company, p), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
+        <td> <%= link_to 'Delete', company_product_path(@company, p), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
       </tr>
 
       <% index += 1 %>

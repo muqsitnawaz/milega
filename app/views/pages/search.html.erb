@@ -1,12 +1,16 @@
-<%= render 'links' %>
+<%= render 'layouts/links' %>
 
 <div class="col-md-12">
   <center>
     <h2>Search Results</h2>
     <div><%= will_paginate @products %></div>
     
-    <% @products.each do |p| %>
-      <%= render "product_row", product: p, order_item: @order_item %>
+    <% if @product.nil? %>
+      <p>No products found matching the given criteria. Click <%= link_to 'here', :back %> to go back</p>
+    <% else %>
+      <% @products.each do |p| %>
+        <%= render "product_row", product: p, order_item: @order_item %>
+      <% end %>
     <% end %>
   </center>
 </div>

@@ -26,6 +26,10 @@ Rails.application.configure do
   # config.time_zone = 'Islamabad'
   # config.active_record.default_timezone = :local
 
+  # Adding fonts
+  config.assets.enabled = true
+  config.assets.paths << Rails.root.join('/app/assets/fonts')
+
   config.cache_classes = false
 
   # Do not eager load code on boot.

@@ -36,6 +36,8 @@ gem 'autoprefixer-rails'            #
 gem 'rmagick'                       # image processing
 gem 'carrierwave'                   # image handling
 
+gem 'font-awesome-rails', '~> 4.1.0.0'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'

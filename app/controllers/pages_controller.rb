@@ -15,7 +15,12 @@ class PagesController < ApplicationController
     detail_category = params[:category]
 
     if !detail_category.nil?
-      @products = Product.where(pdetailcategory: detail_category).paginate(:page => params[:page], :per_page => per_page)
+
+      if detail_category == "all"
+        @products = Product.all.paginate(:page => params[:page], :per_page => per_page)
+      else
+        @products = Product.where(pdetailcategory: detail_category).paginate(:page => params[:page], :per_page => per_page)
+      end
     else
       query = params[:query]
       comp_ids = company_id query

@@ -1,16 +1,78 @@
 <%= render 'layouts/links' %>
 
-<br><br>
+<br>
 <div class="page-margin">
   <center>
     <%= image_tag 'logo_transparent_1.png', size: "380x70" %>
-    <div>
-      Menu Bar
-      <br>
-      <br>
-    </div>
   </center>
 
+  <div class="menu">
+    <div id="men_menu" class="menu-item">MEN'S FASHION</div>
+    <div id="women_menu" class="menu-item">WOMEN'S FASHION</div>
+    <div id="electronics_menu" class="menu-item">ELECTRONICS</div>
+    <div id="personal_care_menu" class="menu-item">PERSONAL CARE</div>
+    <div id="everything" class="menu-item">EVERYTHING</div>
+  </div>
+
+  <div id="menu_options" class="hidden">
+    <!-- menu option 1 -->
+    <div id="men_menu_option" class="hidden" style="z-index: 10;">
+      <br><br>
+      <div class="row">
+        <div class="col-xs-11 col-xs-offset-1">
+          MEN'S FASHION: 
+          <% @men_cats.each do |men_cat| %>
+            <%= link_to men_cat.upcase, "/search?category="+men_cat %>,
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <!-- menu option 2 -->
+    <div id="women_menu_option" class="hidden" style="z-index: 10;">
+      <br><br>
+      <div class="row">
+        <div class="col-xs-11 col-xs-offset-1">
+          WOMEN'S FASHION: 
+          <% @women_cats.each do |women_cat| %>
+            <%= link_to women_cat.upcase, "/search?category="+women_cat %>,
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <!-- menu option 3 -->
+    <div id="electronics_menu_option" class="hidden" style="z-index: 10; margin-top: 15px;">
+      <div class="row">
+        <% @electronics_cats.keys.each do |electronics_cat| %>
+          <div class="col-xs-11 col-xs-offset-1">
+            <%= electronics_cat.upcase %>: 
+
+            <% @electronics_cats[electronics_cat].each do |electronics_subcat| %>
+              <%= link_to electronics_subcat.upcase, "/search?category="+electronics_subcat %>,
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- menu option 4 -->
+    <div id="personal_care_menu_option" class="hidden" style="z-index: 10; margin-top: 25px;">
+      <div class="row">
+        <% @personal_care_cats.keys.each do |personal_care_cat| %>
+          <div class="col-xs-11 col-xs-offset-1">
+            <%= personal_care_cat.upcase %>: 
+
+            <% @personal_care_cats[personal_care_cat].each do |personal_care_subcat| %>
+              <%= link_to personal_care_subcat.upcase, "/search?category="+personal_care_subcat %>,
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <br>
   <%= image_tag 'triblend.jpg' %>  
 
   <br><br><br>
@@ -66,3 +128,65 @@
     </div>
   </div>
 </footer>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    console.log("document loaded")
+  });
+
+  // hides the main "menu_options" div
+  function hide_all_menu_options() {
+    $("#menu_options").addClass("hidden");
+    
+    // hiding all options
+    $("#men_menu_option").addClass("hidden");
+    $("#women_menu_option").addClass("hidden");
+    $("#electronics_menu_option").addClass("hidden");
+    $("#personal_care_menu_option").addClass("hidden");
+  }
+
+  // shows a single option div
+  function show_option(option_id) {
+    console.log("show option called: " + option_id)
+    $("#menu_options").removeClass("hidden");
+
+    $("#"+option_id).removeClass("hidden");
+  }
+
+  // hides a single option div
+  function hide_option(option_id) {
+    $("#menu_options").addClass("hidden");
+
+    $("#"+option_id).addClass("hidden");
+  }
+
+  $("#menu_options").mouseleave(function() {
+    hide_all_menu_options();
+  });
+
+  // adding hovering functionality
+  $("#men_menu").mouseenter(function() {
+    hide_all_menu_options();
+
+    show_option(this.id+"_option");
+  });
+
+  $("#women_menu").mouseenter(function() {
+    hide_all_menu_options();
+
+    show_option(this.id+"_option");
+  });
+
+  $("#electronics_menu").mouseenter(function() {
+    hide_all_menu_options();
+
+    show_option(this.id+"_option");
+  });
+
+  $("#personal_care_menu").mouseenter(function() {
+    hide_all_menu_options();
+
+    show_option(this.id+"_option");
+  });
+
+</script>

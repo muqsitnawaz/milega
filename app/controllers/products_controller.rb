@@ -111,27 +111,4 @@ private
     flash[:notice] = "ACCESS DENIED"
     redirect_to companies_path
   end
-
-  def get_categories_detail
-    categories = Hash[
-      "clothing" => Hash[
-        "men" => ["t-shirts", "shirts", "jeans", "kurta and shalwar kameez", "formal wear", "winter wear"], 
-        "women" => ["tops", "t-shirts", "jeans", "pants and tights", "dresses and skirts", "formal wear", "winter wear"],
-        "kids" => ["t-shirts", "shirts", "jeans"]
-      ],
-      
-      "electronics" => Hash[
-        "laptops" => ["macbook", "window"], 
-        "smartphones" => ["iphone", "android"],
-        "tablets" => ["ipad", "android"]
-      ],
-      
-      "personal care" => Hash[
-        "men" => ["deodorant", "hair products", "shaving", "skin care"],
-        "women" => ["deodorant", "hair products", "skin care"]
-      ]
-    ]
-
-    return categories
-  end
 end

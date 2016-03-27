@@ -3,7 +3,11 @@ class PagesController < ApplicationController
   before_filter :ensure_admin!, only: [ :admin, :get_excel_file ]
 
   def welcome
-    # does nothing
+    cat_hash = get_categories_detail
+    @men_cats = cat_hash["clothing"]["men"];
+    @women_cats = cat_hash["clothing"]["women"];
+    @electronics_cats = cat_hash["electronics"];
+    @personal_care_cats = cat_hash["personal care"];
   end
 
   def search

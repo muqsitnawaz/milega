@@ -16,6 +16,30 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # method for obtatining categories
+  def get_categories_detail
+    categories = Hash[
+      "clothing" => Hash[
+        "men" => ["t-shirts", "shirts", "jeans", "kurta and shalwar kameez", "formal wear", "winter wear"], 
+        "women" => ["tops", "t-shirts", "jeans", "pants and tights", "dresses and skirts", "formal wear", "winter wear"],
+        "kids" => ["t-shirts", "shirts", "jeans"]
+      ],
+      
+      "electronics" => Hash[
+        "laptops" => ["macbook", "window"], 
+        "smartphones" => ["iphone", "android"],
+        "tablets" => ["ipad", "android"]
+      ],
+      
+      "personal care" => Hash[
+        "men" => ["deodorant", "hair products", "shaving", "skin care"],
+        "women" => ["deodorant", "hair products", "skin care"]
+      ]
+    ]
+
+    return categories
+  end
+
   # method for ensuring 'admin'
   def ensure_admin!
     unless current_user.user_role == 1

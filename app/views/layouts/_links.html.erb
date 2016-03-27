@@ -1,12 +1,12 @@
 <div class="row links">
   <div class="col-xs-2" style="margin-top: -1%;">
-    <h2  style="margin-left: 3%;"> <%= image_tag 'logo_inverse_transparent.png', size: "200x40" %></h2>
+    <h2  style="margin-left: 3%;"> <%= link_to image_tag('logo_inverse_transparent.png', size: "200x40"), root_path %></h2>
   </div>
 
   <div class="col-xs-5">
     <%= form_tag "/search", method: :get, id: 'query-form' do %>
       <div class="input-group col-xs-12 search-bar-header" style="line-height: 30px; margin-top: 1.5%;">
-        <%= text_field_tag :query, nil, autofocus: true, placeholder: "Product or brand...", class: 'col-xs-7 col-xs-offset-2', style: "color: black; font-family: DejaVu Serif; font-weight: normal;" %>
+        <%= text_field_tag :query, nil, autofocus: true, placeholder: "Search with product/brand name", class: 'col-xs-7 col-xs-offset-2', style: "color: black; font-family: DejaVu Serif; font-weight: normal;" %>
         <%= submit_tag "SEARCH", class: "btn btn-custom-search" %>
       </div>
     <% end %>

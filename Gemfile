@@ -36,7 +36,8 @@ gem 'autoprefixer-rails'            #
 gem 'rmagick'                       # image processing
 gem 'carrierwave'                   # image handling
 
-gem 'font-awesome-rails', '~> 4.1.0.0'
+gem 'font-awesome-rails', '~> 4.1.0.0'  # font-awesome icons 
+gem 'jquery-minicolors-rails'           # jquery color picker
 
 
 # Use Unicorn as the app server

@@ -47,9 +47,7 @@
             <%= f.label :Size %><br>
             <%= f.select :psize, get_sizes, { :include_blank => false }, {class: "form-control"}  %>
           </div>
-        </div>
-
-        <div class="col-xs-6">
+        
           <div class="form-group">
             <%= f.label :Price %><br>
             <%= f.text_field :pprice, class: "form-control", placeholder: "Rs. "  %>
@@ -60,20 +58,127 @@
             <%= f.text_field :pstock, class: "form-control", type: "number", value: 1, min: 1  %>
           </div>
 
-          <br>
-          <div class="form-group">
-            <%= f.label :Main_Image %><br>
-            <%= f.file_field :pimage1 %>
+          <div id="color-1" style="">
+            <h3>Color 1</h3>
+            <%= f.text_field :p_c1_code, id: "c1_selector", class: "form-control" %>
+
+            <div class='form-group'>
+              <%= f.label :Main_Image %><br>
+              <%= f.file_field :p_c1_image1 %>
+            </div>
+
+            <div class='form-group'>
+              <%= f.label :Other_Image %><br>
+              <%= f.file_field :p_c1_image2 %>
+            </div>
+            
+            <div class='form-group'>
+              <%= f.label :Another_Image %><br>
+              <%= f.file_field :p_c1_image3 %>
+            </div>
           </div>
 
-          <div class="form-group">
-            <%= f.label :Other_Image %><br>
-            <%= f.file_field :pimage2 %>
+          <div id="color-2" style="">
+            <h3>Color 2</h3>
+            <%= f.text_field :p_c2_code, id: "c2_selector", class: "form-control" %>
+
+            <div class='form-group'>
+              <%= f.label :Main_Image %><br>
+              <%= f.file_field :p_c2_image1 %>
+            </div>
+
+            <div class='form-group'>
+              <%= f.label :Other_Image %><br>
+              <%= f.file_field :p_c2_image2 %>
+            </div>
+            
+            <div class='form-group'>
+              <%= f.label :Another_Image %><br>
+              <%= f.file_field :p_c2_image3 %>
+            </div>
           </div>
-          
-          <div class="form-group">
-            <%= f.label :Another_Image %><br>
-            <%= f.file_field :pimage3 %>
+        </div>
+
+        <div class="col-xs-6">
+
+          <div id="color-3" style="">
+            <h3>Color 3</h3>
+            <%= f.text_field :p_c3_code, id: "c3_selector", class: "form-control" %>
+
+            <div class='form-group'>
+              <%= f.label :Main_Image %><br>
+              <%= f.file_field :p_c3_image1 %>
+            </div>
+
+            <div class='form-group'>
+              <%= f.label :Other_Image %><br>
+              <%= f.file_field :p_c3_image2 %>
+            </div>
+            
+            <div class='form-group'>
+              <%= f.label :Another_Image %><br>
+              <%= f.file_field :p_c3_image3 %>
+            </div>
+          </div>
+
+          <div id="color-4" style="">
+            <h3>Color 4</h3>
+            <%= f.text_field :p_c4_code, id: "c4_selector", class: "form-control" %>
+
+            <div class='form-group'>
+              <%= f.label :Main_Image %><br>
+              <%= f.file_field :p_c4_image1 %>
+            </div>
+
+            <div class='form-group'>
+              <%= f.label :Other_Image %><br>
+              <%= f.file_field :p_c4_image2 %>
+            </div>
+            
+            <div class='form-group'>
+              <%= f.label :Another_Image %><br>
+              <%= f.file_field :p_c4_image3 %>
+            </div>
+          </div>
+
+          <div id="color-5" style="">
+            <h3>Color 5</h3>
+            <%= f.text_field :p_c5_code, id: "c5_selector", class: "form-control" %>
+
+            <div class='form-group'>
+              <%= f.label :Main_Image %><br>
+              <%= f.file_field :p_c5_image1 %>
+            </div>
+
+            <div class='form-group'>
+              <%= f.label :Other_Image %><br>
+              <%= f.file_field :p_c5_image2 %>
+            </div>
+            
+            <div class='form-group'>
+              <%= f.label :Another_Image %><br>
+              <%= f.file_field :p_c5_image3 %>
+            </div>
+          </div>
+
+          <div id="color-6" style="">
+            <h3>Color 6</h3>
+            <%= f.text_field :p_c6_code, id: "c6_selector", class: "form-control" %>
+
+            <div class='form-group'>
+              <%= f.label :Main_Image %><br>
+              <%= f.file_field :p_c6_image1 %>
+            </div>
+
+            <div class='form-group'>
+              <%= f.label :Other_Image %><br>
+              <%= f.file_field :p_c6_image2 %>
+            </div>
+            
+            <div class='form-group'>
+              <%= f.label :Another_Image %><br>
+              <%= f.file_field :p_c6_image3 %>
+            </div>
           </div>
 
           <div style="margin-top: 12%;">
@@ -151,4 +256,22 @@
       }
     });
   }
+
+  $(document).ready(function() {
+    $.minicolors.defaults = $.extend($.minicolors.defaults, {
+      changeDelay: 200,
+      letterCase: 'uppercase',
+      theme: 'bootstrap'
+    });
+
+    function apply_minicolor(ids) {
+      for (i = 0; i < ids.length; i++) {
+        console.log(ids[i])
+        $("#"+ids[i]).minicolors();
+      }
+    }
+
+    // attaching color-selector
+    apply_minicolor(["c1_selector", "c2_selector", "c3_selector", "c4_selector", "c5_selector", "c6_selector"])
+  });
 </script>

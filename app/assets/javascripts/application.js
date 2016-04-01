@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require jquery.minicolors
 //= require_tree .
 
 function str_equal(str1, str2) {

@@ -99,7 +99,14 @@ class ProductsController < ApplicationController
 
 private
   def product_params(company)
-    pms = params.require(:product).permit(:pname, :pdescrip, :psize, :pprice, :pstock, :pcategory, :psubcategory, :pdetailcategory, :pimage1, :pimage2, :pimage3)
+    pms = params.require(:product).permit(:pname, :pdescrip, :psize, :pprice, :pstock, :pcategory, :psubcategory, :pdetailcategory, 
+      :p_c1_code, :p_c1_image1, :p_c1_image2, :p_c1_image3,
+      :p_c2_code, :p_c2_image1, :p_c1_image2, :p_c2_image3,
+      :p_c3_code, :p_c3_image1, :p_c1_image2, :p_c3_image3,
+      :p_c4_code, :p_c4_image1, :p_c1_image2, :p_c4_image3,
+      :p_c5_code, :p_c5_image1, :p_c1_image2, :p_c5_image3,
+      :p_c6_code, :p_c6_image1, :p_c1_image2, :p_c6_image3
+      )
     if pms[:company_id].nil?
       pms[:company_id] = company.id
     end

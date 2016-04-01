@@ -10,14 +10,34 @@ class Product < ActiveRecord::Base
   validates :psubcategory, presence: true
   validates :pdetailcategory, presence: true
 
-  validates :pimage1, presence: true
-  validates :pimage2, presence: true
-  validates :pimage3, presence: true
+  validates :p_c1_image1, presence: true
+  validates :p_c1_image2, presence: true
+  validates :p_c1_image3, presence: true
 
   # Image Uploaders
-  mount_uploader :pimage1, MainImageUploader
-  mount_uploader :pimage2, ImageUploader
-  mount_uploader :pimage3, ImageUploader
+  mount_uploader :p_c1_image1, MainImageUploader
+  mount_uploader :p_c1_image2, ImageUploader
+  mount_uploader :p_c1_image3, ImageUploader
+
+  mount_uploader :p_c2_image1, ImageUploader
+  mount_uploader :p_c2_image2, ImageUploader
+  mount_uploader :p_c2_image3, ImageUploader
+
+  mount_uploader :p_c3_image1, ImageUploader
+  mount_uploader :p_c3_image2, ImageUploader
+  mount_uploader :p_c3_image3, ImageUploader
+
+  mount_uploader :p_c4_image1, ImageUploader
+  mount_uploader :p_c4_image2, ImageUploader
+  mount_uploader :p_c4_image3, ImageUploader
+
+  mount_uploader :p_c5_image1, ImageUploader
+  mount_uploader :p_c5_image2, ImageUploader
+  mount_uploader :p_c5_image3, ImageUploader
+
+  mount_uploader :p_c6_image1, ImageUploader
+  mount_uploader :p_c6_image2, ImageUploader
+  mount_uploader :p_c6_image3, ImageUploader
 
   # Associations
   belongs_to :company

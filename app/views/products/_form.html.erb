@@ -44,8 +44,28 @@
           </div>
 
           <div class="form-group">
-            <%= f.label :Size %><br>
-            <%= f.select :psize, get_sizes, { :include_blank => false }, {class: "form-control"}  %>
+            <%= f.label :Size_XS %><br>
+            <%= f.select :psize_xs, get_booleans, { :include_blank => false }, {class: "form-control"}  %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :Size_S %><br>
+            <%= f.select :psize_s, get_booleans, { :include_blank => false }, {class: "form-control"}  %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :Size_M %><br>
+            <%= f.select :psize_m, get_booleans, { :include_blank => false }, {class: "form-control"}  %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :Size_L %><br>
+            <%= f.select :psize_l, get_booleans, { :include_blank => false }, {class: "form-control"}  %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :Size_XL %><br>
+            <%= f.select :psize_xl, get_booleans, { :include_blank => false }, {class: "form-control"}  %>
           </div>
         
           <div class="form-group">

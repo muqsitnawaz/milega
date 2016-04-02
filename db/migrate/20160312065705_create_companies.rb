@@ -17,7 +17,13 @@ class CreateCompanies < ActiveRecord::Migration
       t.belongs_to :company, index:true
       t.string :pname
       t.string :pdescrip
-      t.string :psize
+      
+      t.boolean :psize_xs
+      t.boolean :psize_s
+      t.boolean :psize_m
+      t.boolean :psize_l
+      t.boolean :psize_xl
+
       t.integer :pprice
       t.integer :pstock
       t.string :pcategory

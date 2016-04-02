@@ -5,6 +5,10 @@ class ProductsController < ApplicationController
   def show  # public method
     @product = Product.find_by_id(params[:id])
     @company = Company.find_by_id(@product.company_id)
+
+    @products_related = Product.where(pdetailcategory: @product.pdetailcategory).limit(4).reject { |r| r == @product }
+
+    @order_item = current_order.order_items.new
   end
 
   def new
@@ -99,13 +103,15 @@ class ProductsController < ApplicationController
 
 private
   def product_params(company)
-    pms = params.require(:product).permit(:pname, :pdescrip, :psize, :pprice, :pstock, :pcategory, :psubcategory, :pdetailcategory, 
+    pms = params.require(:product).permit(:pname, :pdescrip, 
+      :psize_xs, :psize_s, :psize_m, :psize_l, :psize_xl,
+      :pprice, :pstock, :pcategory, :psubcategory, :pdetailcategory, 
       :p_c1_code, :p_c1_image1, :p_c1_image2, :p_c1_image3,
-      :p_c2_code, :p_c2_image1, :p_c1_image2, :p_c2_image3,
-      :p_c3_code, :p_c3_image1, :p_c1_image2, :p_c3_image3,
-      :p_c4_code, :p_c4_image1, :p_c1_image2, :p_c4_image3,
-      :p_c5_code, :p_c5_image1, :p_c1_image2, :p_c5_image3,
-      :p_c6_code, :p_c6_image1, :p_c1_image2, :p_c6_image3
+      :p_c2_code, :p_c2_image1, :p_c2_image2, :p_c2_image3,
+      :p_c3_code, :p_c3_image1, :p_c3_image2, :p_c3_image3,
+      :p_c4_code, :p_c4_image1, :p_c4_image2, :p_c4_image3,
+      :p_c5_code, :p_c5_image1, :p_c5_image2, :p_c5_image3,
+      :p_c6_code, :p_c6_image1, :p_c6_image2, :p_c6_image3
       )
     if pms[:company_id].nil?
       pms[:company_id] = company.id

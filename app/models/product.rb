@@ -2,7 +2,7 @@ class Product < ActiveRecord::Base
   # Validations
   validates :pname, presence: true, length: { minimum: 3 }
   validates :pname, presence: true, length: { in: 10..30 }
-  validates :psize, presence: true, inclusion: {in: ["S", "M", "L", "XL"]}
+  # validates :psize, presence: true, inclusion: {in: ["S", "M", "L", "XL"]}
   validates :pprice, presence: true, numericality: { only_integer: true, greater_than: 10 }
   validates :pstock, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
   
@@ -11,8 +11,6 @@ class Product < ActiveRecord::Base
   validates :pdetailcategory, presence: true
 
   validates :p_c1_image1, presence: true
-  validates :p_c1_image2, presence: true
-  validates :p_c1_image3, presence: true
 
   # Image Uploaders
   mount_uploader :p_c1_image1, MainImageUploader

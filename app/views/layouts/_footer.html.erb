@@ -1,0 +1,38 @@
+<footer class="footer">
+  <div class="page-margin">
+    <br><br><br>
+    <div class="footer-contents">
+      <div class="row">
+        <div class="col-xs-12" style="font-weight: bold;">
+          <div class="col-xs-4">
+            <h4>QUICK LINKS</h4>
+            <%= link_to 'Sign In', new_user_session_path %> <br>
+            <%= link_to 'Register', new_user_registration_path %> <br>
+            <%= link_to 'Checkout', cart_path %>
+          </div>
+
+          <div class="col-xs-4">
+            <h4>OUR SOCIAL PRESENCE</h4>
+
+            <i style="color:#3b5998;" class="fa fa-facebook fa-lg"></i>
+            <i style="color:#00aced;" class="fa fa-twitter fa-lg"></i>
+            <i style="color:#A0522D;" class="fa fa-instagram fa-lg"></i>
+          </div>
+
+          <div class="col-xs-4">
+            <h4>ANY QUERIES?</h4>
+            <a href="">Mail us at </a>
+            <%= mail_to "queries@milayga.com", "queries@milayga.com", subject: "Footer Query" %>
+          </div>
+        </div>
+      
+        <div class="col-xs-12">
+          <hr>
+          <center style="margin-top: -5px;">
+            &copy; Milayga, All Rights Reserved
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

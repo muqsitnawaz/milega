@@ -1,26 +1,30 @@
-<div class="col-md-4">
+<div class="col-md-3">
   <div class="row">
-    <div class="col-xs-7">
-      <div class="thumbnail">
-        <%= image_tag product.p_c1_image1_url(:thumb).to_s %>
+    <div class="col-xs-12">
+      <div id="thumbnail_<%= product.id %>" class="thumbnail">
+        <!-- product's image -->
+        <%= link_to image_tag(product.p_c1_image1_url(:thumb).to_s), product_path(product) %>
+        
+
+        <!-- image's caption -->
         <div class="caption">
           <p><%= product.pname %></p>
           <p><%= product.pdescrip %> <%= link_to 'View', product_path(product) %></p>
+
+          <div id="form_<%= product.id %>" class="hidden" style="z-index: 10px;">
+            <%= form_for order_item, remote: true do |f| %>
+              <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency(product.pprice, unit: "Rs ") %></span></h4>
+              <div class="input-group">
+                <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+                <div class="input-group-btn">
+                  <%= f.hidden_field :product_id, value: product.id %>
+                  <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-xs-5" style="margin-top: 3.3em;">  
-      <%= form_for order_item, remote: true do |f| %>
-      <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency(product.pprice, unit: "Rs") %></span></h4>
-        <div class="input-group">
-          <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
-          <div class="input-group-btn">
-            <%= f.hidden_field :product_id, value: product.id %>
-            <%= f.submit "Add to Cart", class: "btn btn-primary" %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    
-  </div>
+  </div> <!-- end of row -->
 </div>

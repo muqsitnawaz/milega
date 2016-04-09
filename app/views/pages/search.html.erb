@@ -1,5 +1,3 @@
-<%= render 'layouts/links' %>
-
 <div id="products" style="margin-top: 2%;">
   <div class="row">
     <div class="page-margin">
@@ -84,7 +82,9 @@
           <div class="col-xs-12">
             <% if @products.empty? %>
               <!-- showing error message -->
-              <p>No products found matching the given criteria. Click <%= link_to 'here', :back %> to go back</p>
+              <center>
+                <p style="height: 400px;">No products found matching the given criteria. Click <%= link_to 'here', :back %> to go back</p>
+              </center>
             <% else %>
               <!-- rendering products -->
               <% @products.each do |p| %>

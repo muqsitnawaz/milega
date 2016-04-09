@@ -26,7 +26,7 @@ class OrderItemsController < ApplicationController
     puts param
     @order = current_order
     @order_item = @order.order_items.new(param)
-    @order.save
+    @order.save!
     redirect_to new_shipping_detail_path
   end
 private

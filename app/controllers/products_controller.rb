@@ -8,6 +8,8 @@ class ProductsController < ApplicationController
 
     @products_related = Product.where(pdetailcategory: @product.pdetailcategory).limit(5).reject { |r| r == @product }
 
+    @num_images = get_num_images(@product)
+
     @order_item = current_order.order_items.new
   end
 
@@ -123,5 +125,17 @@ private
   def redirect_with_access_denied
     flash[:notice] = "ACCESS DENIED"
     redirect_to companies_path
+  end
+
+  def get_num_images(product)
+    num_images = 1
+    if product.p_c1_image2_url.to_s != ""
+      num_images += 1
+    end
+    if product.p_c1_image3_url.to_s != ""
+      num_images += 1
+    end
+
+    return num_images
   end
 end

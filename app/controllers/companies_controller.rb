@@ -15,7 +15,7 @@ class CompaniesController < ApplicationController
       @companies = Company.where(user_id: current_user.id).order(@sort_by)
     end
 
-    @companies = @companies.paginate(:page => params[:page], :per_page => 10)
+    @companies = @companies.paginate(:page => params[:page], :per_page => 8)
   end
 
   def show

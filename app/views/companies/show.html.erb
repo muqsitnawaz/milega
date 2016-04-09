@@ -29,11 +29,10 @@
         <td> 
           <%= link_to p.pname, product_path(p) %> 
           <%= link_to 'edit', edit_company_product_path(@company, p) %>
-          <%= link_to 'delete', company_product_path(@company, p), method: :delete, data: { confirm: 'Are you sure?'} %>
         </td>
         <td> <%= p.pdescrip %> </td>
         <td> <%= p.pprice %> </td>
-        <td> <%= link_to 'Delete', company_product_path(@company, p), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
+        <td> <%= link_to '', company_product_path(@company, p), method: :delete, data: { confirm: 'Are you sure?'}, class: "fa fa-trash-o fa-lg" %> </td>
       </tr>
 
       <% index += 1 %>
@@ -42,6 +41,8 @@
 
   <br>
 
-  <br><%= link_to "Add New Product", new_company_product_path(@company.id) %>
-  <br><%= link_to "Back", companies_path %>
+  <div class="btn-group">
+    <%= link_to "Back", companies_path, class: "btn btn-default" %>
+    <%= link_to "Add New Product", new_company_product_path(@company.id), class: "btn btn-primary" %>
+  </div>
 </div>

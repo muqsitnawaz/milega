@@ -1,35 +1,33 @@
-<!-- header links -->
-<%= render 'layouts/links' %>
-<br>
-
 <!-- shopping items -->
-<% if !@order_item.nil? && @order_item.errors.any? %>
-  <div class="alert alert-danger">
-    <ul>
-    <% @order_item.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-<% if @order_items.size == 0 %>
-  <br>
-  <p class="text-center">
-    There are no items in your shopping cart.  Please <%= link_to "go back", :back %> and add some items to your cart.
-  </p>
-<% else %>
-  <div class="row">
-    <div class="col-xs-9 col-xs-offset-3">
-      <h4>Please <%= link_to 'refresh', '/cart' %> this page after updating your order</h4>
-    </div>
-
-    <br><br><br>
-    <div class="col-xs-12">
-      <% @order_items.each do |order_item| %>
-        <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
+<div class="cart">
+  <% if !@order_item.nil? && @order_item.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+      <% @order_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
+      </ul>
     </div>
-  </div>
+  <% end %>
+  <% if @order_items.size == 0 %>
+    <br>
+    <p class="text-center" style="height: 600px;">
+      There are no items in your shopping cart.  Please <%= link_to "go back", :back %> and add some items to your cart.
+    </p>
+  <% else %>
+    <div class="row">
+      <div class="col-xs-9 col-xs-offset-3">
+        <h4>Please <%= link_to 'refresh', '/cart' %> this page after updating your order</h4>
+      </div>
 
-  <%= render 'checkout_button' %>
-<% end %>
+      <br><br><br>
+      <div class="col-xs-12">
+        <% @order_items.each do |order_item| %>
+          <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
+        <% end %>
+      </div>
+    </div>
+
+    <%= render 'checkout_button' %>
+  <% end %>
+</div>

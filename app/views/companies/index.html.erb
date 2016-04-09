@@ -1,4 +1,4 @@
-<div class="company-margin">
+<div class="company-margin" style="height: 700px;">
   <h2> <%= current_user.uname %>'s Companies <%= is_admin? ? "[Admin]" : "" %></h2>
   <hr>
 
@@ -20,7 +20,7 @@
           <%= link_to 'edit', edit_company_path(c) %>
         </td>
         <td> <%= c.ctype %> </td>
-        <td> <%= link_to 'Delete', company_path(c), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
+        <td> <%= link_to '', company_path(c), method: :delete, data: { confirm: 'Are you sure?'}, class: "fa fa-trash-o fa-lg" %> </td>
       </tr>
 
       <% index += 1 %>
@@ -28,5 +28,5 @@
   </table>
 
   <br>
-  <%= link_to 'Create New Company', new_company_path %>
+  <%= link_to 'Create New Company', new_company_path, class: "btn btn-primary" %>
 </div>

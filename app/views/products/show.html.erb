@@ -1,5 +1,3 @@
-<%= render 'layouts/links' %>
-
 <div class="product-margin">
   <div class="row">
     <div class="col-xs-4">
@@ -83,8 +81,9 @@
       <div id="prodCarousel" class="carousel slide">
         <ol class="carousel-indicators">
           <li data-target="prodCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="prodCarousel" data-slide-to="1"></li>
-          <li data-target="prodCarousel" data-slide-to="2"></li>
+          <% for i in 0..(@num_images-2) %>
+            <li data-target="prodCarousel" data-slide-to="<%= i+1 %>"></li>  
+          <% end %>
         </ol>
         <div class="carousel-inner">
           <div class="item active">
@@ -102,17 +101,14 @@
               <%= image_tag @product.p_c1_image3_url.to_s, id: "car_img_3",  size: "550x550", class: "img-thumbnail" %>
             </div>
           <% end %>
-
         </div> <!-- end of inner-carousel -->
 
         <!-- carousel controls -->
         <a class="left carousel-control" href="#prodCarousel" role="button" data-slide="prev" onclick="$('#prodCarousel').carousel('prev')">
-          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
+          <span class="fa fa-arrow-circle-left" aria-hidden="true" style="position: absolute; top: 48%;"></span>
         </a>
         <a class="right carousel-control" href="#prodCarousel" role="button" data-slide="next" onclick="$('#prodCarousel').carousel('next')">
-          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
+          <span class="fa fa-arrow-circle-right" aria-hidden="true" style="position: absolute; top: 48%;"></span>
         </a>
       </div> <!-- end of carousel -->
     </div>
@@ -151,8 +147,6 @@
     </div>
   </div>
 </div>
-
-<%= render 'layouts/footer' %>
 
 <script>
     $(document).ready(function() {
@@ -234,7 +228,4 @@
         $("#car_img_3").attr("src", "<%= @product.p_c6_image3_url.to_s %>");
       <% end %>
     });
-
-
-
 </script>

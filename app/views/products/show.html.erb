@@ -117,7 +117,7 @@
       </div> <!-- end of carousel -->
     </div>
 
-    <div id="sizechart" class="col-xs-12" style="margin-top: 4%;">
+    <div id="sizechart" class="col-xs-12" style="margin-top: 6%;">
       <center>
         <%= image_tag 'sizechart.jpg', width: "60%", height: "100%" %>
       </center>
@@ -154,12 +154,11 @@
 
 <%= render 'layouts/footer' %>
 
-
 <script>
     $(document).ready(function() {
       // carousel sliding
-      $('.carousel').carousel({
-        interval: 10000
+      $('#prodCarousel').carousel({
+        interval: 3000
       });
     });
 

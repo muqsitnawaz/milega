@@ -1,44 +1,46 @@
 <div class="row links">
-  <div class="col-xs-2" style="margin-top: -1%;">
-    <h2  style="margin-left: 3%;"> <%= link_to image_tag('logo_inverse_transparent.png', size: "200x40"), root_path %></h2>
-  </div>
+  <div>
+    <div class="col-xs-2" style="margin-top: -1%;">
+      <h2  style="margin-left: 3%;"> <%= link_to image_tag('logo_inverse_transparent.png', size: "200x40"), root_path %></h2>
+    </div>
 
-  <div class="col-xs-5">
-    <%= form_tag "/search", method: :get, id: 'query-form' do %>
-      <div class="input-group col-xs-12 search-bar-header" style="line-height: 30px; margin-top: 1.5%;">
-        <%= text_field_tag :query, nil, autofocus: true, placeholder: "Search with product/brand name", class: 'col-xs-7 col-xs-offset-2', style: "color: black; font-family: DejaVu Serif; font-weight: normal;" %>
-        <%= submit_tag "SEARCH", class: "btn btn-custom-search" %>
-      </div>
-    <% end %>
-  </div>
+    <div class="col-xs-5" style="margin-top: 0.5%; line-height:2;">
+      <%= form_tag "/search", method: :get, id: 'query-form' do %>
+        <div class="input-group col-xs-12 search-bar-header" style="margin-top: 0px;">
+          <%= text_field_tag :query, nil, autofocus: true, placeholder: "Search with product/brand name", class: 'col-xs-7 col-xs-offset-2', style: "color: black; font-family: DejaVu Serif; font-weight: normal;" %>
+          <%= submit_tag "SEARCH", class: "btn btn-custom-search" %>
+        </div>
+      <% end %>
+    </div>
 
-  <div id="user-links" class="col-xs-5" style="margin-top:0.7%;">
-    <% if user_signed_in? %>
-      <% if is_admin? %>
+    <div id="user-links" class="col-xs-5" style="margin-top:0.7%;">
+      <% if user_signed_in? %>
+        <% if is_admin? %>
+            <div class="inline" style="margin-left:23%;">
+              <div class="btn btn-custom-header"> <%= current_user.uname.upcase %> </div>
+              <%= link_to 'ADMIN\'S PANEL', '/admin', class: "btn btn-custom-cart" %>
+              <%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete, class: "btn btn-custom-sign" %>
+            </div>
+        <% elsif is_company_owner? %>
           <div class="inline" style="margin-left:23%;">
-            <div class="btn btn-custom-header"> <%= current_user.uname.upcase %> </div>
-            <%= link_to 'ADMIN\'S PANEL', '/admin', class: "btn btn-custom-cart" %>
+            <div class="btn btn-custom-header"> <%= current_user.uname %> </div>
+            <%= link_to 'VIEW COMPANIES', '/companies', class: "btn btn-custom-cart" %>
             <%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete, class: "btn btn-custom-sign" %>
           </div>
-      <% elsif is_company_owner? %>
-        <div class="inline" style="margin-left:23%;">
-          <div class="btn btn-custom-header"> <%= current_user.uname %> </div>
-          <%= link_to 'VIEW COMPANIES', '/companies', class: "btn btn-custom-cart" %>
-          <%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete, class: "btn btn-custom-sign" %>
-        </div>
-      <% else %>
-        <div class="inline" style="margin-left:23%;">
-          <div class="btn btn-custom-header"> <%= current_user.uname %> </div>
-          <%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete, class: "btn btn-custom-sign" %>
+        <% else %>
+          <div class="inline" style="margin-left:23%;">
+            <div class="btn btn-custom-header"> <%= current_user.uname %> </div>
+            <%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete, class: "btn btn-custom-sign" %>
+            <div class="cart-text inline"><%= render 'layouts/cart_text' %></div>
+          </div>
+        <% end %>
+      <% else %> <!-- user_signed_in's else -->
+        <div class="inline" style="margin-left:30%;">
+          <%= link_to 'SIGN IN', new_user_session_path, class: "btn btn-custom-sign" %>
+          <%= link_to 'REGISTER', new_user_registration_path, class: "btn btn-custom-sign" %>
           <div class="cart-text inline"><%= render 'layouts/cart_text' %></div>
         </div>
       <% end %>
-    <% else %> <!-- user_signed_in's else -->
-      <div class="inline" style="margin-left:30%;">
-        <%= link_to 'SIGN IN', new_user_session_path, class: "btn btn-custom-sign" %>
-        <%= link_to 'REGISTER', new_user_registration_path, class: "btn btn-custom-sign" %>
-        <div class="cart-text inline"><%= render 'layouts/cart_text' %></div>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>

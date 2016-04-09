@@ -11,30 +11,34 @@ class PagesController < ApplicationController
   end
 
   def search
-    per_page = 9
+    per_page = 12
     detail_category = params[:category]
+    @products = "";
 
     if !detail_category.nil?
-
       if detail_category == "all"
-        @products = Product.all.paginate(:page => params[:page], :per_page => per_page)
+        @products = Product.all
       else
-        @products = Product.where(pdetailcategory: detail_category).paginate(:page => params[:page], :per_page => per_page)
+        @products = Product.where(pdetailcategory: detail_category)
       end
     else
       query = params[:query]
       comp_ids = company_id query
-      
-
-      puts "Comp ids: #{comp_ids}"
 
       if comp_ids.empty?
-        @products = Product.where("pname iLIKE ?" , "%#{query}%").paginate(:page => params[:page], :per_page => per_page)
+        @products = Product.where("pname iLIKE ?" , "%#{query}%")
       else
-        @products = Product.where(:company_id => comp_ids).paginate(:page => params[:page], :per_page => per_page)
+        @products = Product.where(:company_id => comp_ids)
       end
     end
 
+    # total products
+    @total_products = @products.size
+    
+    # paginating products
+    @products = @products.paginate(:page => params[:page], :per_page => per_page)
+
+    # order item
     @order_item = current_order.order_items.new
   end
 

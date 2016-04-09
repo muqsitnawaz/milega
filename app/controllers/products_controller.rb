@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
     @product = Product.find_by_id(params[:id])
     @company = Company.find_by_id(@product.company_id)
 
-    @products_related = Product.where(pdetailcategory: @product.pdetailcategory).limit(4).reject { |r| r == @product }
+    @products_related = Product.where(pdetailcategory: @product.pdetailcategory).limit(5).reject { |r| r == @product }
 
     @order_item = current_order.order_items.new
   end

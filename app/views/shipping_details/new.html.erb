@@ -1,7 +1,7 @@
-<div class="form-margin">
-  <p><%= render 'layouts/links' %></p>
+<%= render 'layouts/links' %>
 
-  <h4 style="margin: 1.3%;">Please confirm your shipping details</h4>
+<div class="form-margin">
+  <h4 style="margin: 1.3%;">Please click <%= link_to 'here', cart_path %> first to confirm your order</h4>
 
   <div class="col-xs-4">
     <%= render 'form' %>

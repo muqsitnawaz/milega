@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'pages#welcome'
 
   #   get 'products/:id' => 'catalog#view'
-  get "/search" => 'pages#search'
+  get "/search" => 'pages#search', as: 'search'
   get "/admin" => 'pages#admin'
   get "/order_details" => 'pages#order_details'
   
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   get "/sub_categories" => 'products#sub_categories'
   get "/detail_categories" => 'products#detail_categories'
+
+  get "/buy_now" => 'order_items#buy_now', as: 'buy_now'
 
   #   resources :products
   resources :companies do

@@ -12,14 +12,22 @@ class PagesController < ApplicationController
 
   def search
     per_page = 12
-    detail_category = params[:category]
+    sub_category = params[:subcategory]
+    detail_category = params[:detailcategory]
     @products = "";
+
+    # category variables
+    cat_hash = get_categories_detail
+    @men_cats = cat_hash["clothing"]["men"];
+    @women_cats = cat_hash["clothing"]["women"];
+    @electronics_cats = cat_hash["electronics"];
+    @personal_care_cats = cat_hash["personal care"];
 
     if !detail_category.nil?
       if detail_category == "all"
         @products = Product.all
       else
-        @products = Product.where(pdetailcategory: detail_category)
+        @products = Product.where(psubcategory: sub_category,pdetailcategory: detail_category)
       end
     else
       query = params[:query]

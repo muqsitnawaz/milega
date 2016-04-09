@@ -2,35 +2,99 @@
 
 <div id="products" style="margin-top: 2%;">
   <div class="row">
-    <div class="col-xs-2" style="margin-top: 5.5%;">
-      Sorting Panel
-    </div>
+    <div class="page-margin">
+      <div class="menu">
+        <div id="men_menu" class="menu-item">MEN'S FASHION</div>
+        <div id="women_menu" class="menu-item">WOMEN'S FASHION</div>
+        <div id="electronics_menu" class="menu-item">ELECTRONICS</div>
+        <div id="personal_care_menu" class="menu-item">PERSONAL CARE</div>
+        <a id="everything" class="menu-item" href="/search?category=all" style="color: black;">EVERYTHING</a>
+      </div>
 
-    <div class="col-xs-10">
-      <hr style="margin-top: 5px;">
-        <center style="color: grey;"><%= @total_products %> PRODUCTS FOUND</center>
-      <hr>
-      <!-- pagination -->
-      <div class="row">
-        <div class="col-xs-12">
-          <center style="margin-bottom: 1%;">
-            <div><%= will_paginate @products %></div>
-          </center>
+      <div id="menu_options" class="hidden">
+        <!-- menu option 1 -->
+        <div id="men_menu_option" class="hidden" style="z-index: 100;">
+          <br><br>
+          <div class="row">
+            <div class="col-xs-11 col-xs-offset-1">
+              MEN'S FASHION: 
+              <% @men_cats.each do |men_cat| %>
+                <%= link_to men_cat.upcase, search_path({subcategory: 'men', detailcategory: men_cat}) %>,
+              <% end %>
+            </div>
+          </div>
         </div>
-        
-        <div class="col-xs-12">
-          <% if @products.empty? %>
-            <!-- showing error message -->
-            <p>No products found matching the given criteria. Click <%= link_to 'here', :back %> to go back</p>
-          <% else %>
-            <!-- rendering products -->
-            <% @products.each do |p| %>
-              <%= render "product_row", product: p, order_item: @order_item %>
+
+        <!-- menu option 2 -->
+        <div id="women_menu_option" class="hidden" style="z-index: 10;">
+          <br>
+          <div class="row">
+            <div class="col-xs-11 col-xs-offset-1">
+              WOMEN'S FASHION: 
+              <% @women_cats.each do |women_cat| %>
+                <%= link_to women_cat.upcase, search_path({subcategory: 'women', detailcategory: women_cat}) %>,
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <!-- menu option 3 -->
+        <div id="electronics_menu_option" class="hidden" style="z-index: 10; margin-top: 15px;">
+          <div class="row">
+            <% @electronics_cats.keys.each do |electronics_cat| %>
+              <div class="col-xs-11 col-xs-offset-1">
+                <%= electronics_cat.upcase %>: 
+
+                <% @electronics_cats[electronics_cat].each do |electronics_subcat| %>
+                  <%= link_to electronics_subcat.upcase, search_path({subcategory: 'electronics', detailcategory: electronics_cat}) %>,
+                <% end %>
+              </div>
             <% end %>
-          <% end %>
+          </div>
+        </div>
+
+        <!-- menu option 4 -->
+        <div id="personal_care_menu_option" class="hidden" style="z-index: 10; margin-top: 25px;">
+          <div class="row">
+            <% @personal_care_cats.keys.each do |personal_care_cat| %>
+              <div class="col-xs-11 col-xs-offset-1">
+                <%= personal_care_cat.upcase %>: 
+
+                <% @personal_care_cats[personal_care_cat].each do |personal_care_subcat| %>
+                  <%= link_to personal_care_subcat.upcase, search_path({subcategory: 'personal_care', detailcategory: personal_care_cat}) %>,
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div>
+        <hr style="margin-top: 5px;">
+          <center style="color: grey;"><%= @total_products %> PRODUCTS FOUND</center>
+        <hr>
+        <!-- pagination -->
+        <div class="row">
+          <div class="col-xs-12">
+            <center style="margin-bottom: 1%;">
+              <div><%= will_paginate @products %></div>
+            </center>
+          </div>
+          
+          <div class="col-xs-12">
+            <% if @products.empty? %>
+              <!-- showing error message -->
+              <p>No products found matching the given criteria. Click <%= link_to 'here', :back %> to go back</p>
+            <% else %>
+              <!-- rendering products -->
+              <% @products.each do |p| %>
+                <%= render "product_row", product: p, order_item: @order_item %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </center>
   </div>
 </div>
 
@@ -49,5 +113,60 @@
     $("#buynow_"+id).addClass("hidden");
     $("#form_"+id).css("opacity", "0");
     $(this).css('border', '0px')
+  });
+
+  // hides the main "menu_options" div
+  function hide_all_menu_options() {
+    $("#menu_options").addClass("hidden");
+    
+    // hiding all options
+    $("#men_menu_option").addClass("hidden");
+    $("#women_menu_option").addClass("hidden");
+    $("#electronics_menu_option").addClass("hidden");
+    $("#personal_care_menu_option").addClass("hidden");
+  }
+
+  // shows a single option div
+  function show_option(option_id) {
+    console.log("show option called: " + option_id)
+    $("#menu_options").removeClass("hidden");
+
+    $("#"+option_id).removeClass("hidden");
+  }
+
+  // hides a single option div
+  function hide_option(option_id) {
+    $("#menu_options").addClass("hidden");
+
+    $("#"+option_id).addClass("hidden");
+  }
+
+  $("#menu_options").mouseleave(function() {
+    hide_all_menu_options();
+  });
+
+  // adding hovering functionality
+  $("#men_menu").mouseenter(function() {
+    hide_all_menu_options();
+
+    show_option(this.id+"_option");
+  });
+
+  $("#women_menu").mouseenter(function() {
+    hide_all_menu_options();
+
+    show_option(this.id+"_option");
+  });
+
+  $("#electronics_menu").mouseenter(function() {
+    hide_all_menu_options();
+
+    show_option(this.id+"_option");
+  });
+
+  $("#personal_care_menu").mouseenter(function() {
+    hide_all_menu_options();
+
+    show_option(this.id+"_option");
   });
 </script>

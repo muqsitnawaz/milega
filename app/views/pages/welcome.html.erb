@@ -16,13 +16,13 @@
 
   <div id="menu_options" class="hidden">
     <!-- menu option 1 -->
-    <div id="men_menu_option" class="hidden" style="z-index: 10;">
+    <div id="men_menu_option" class="hidden" style="z-index: 100;">
       <br><br>
       <div class="row">
         <div class="col-xs-11 col-xs-offset-1">
           MEN'S FASHION: 
           <% @men_cats.each do |men_cat| %>
-            <%= link_to men_cat.upcase, "/search?category="+men_cat %>,
+            <%= link_to men_cat.upcase, search_path({subcategory: 'men', detailcategory: men_cat}) %>,
           <% end %>
         </div>
       </div>
@@ -30,12 +30,12 @@
 
     <!-- menu option 2 -->
     <div id="women_menu_option" class="hidden" style="z-index: 10;">
-      <br><br>
+      <br>
       <div class="row">
         <div class="col-xs-11 col-xs-offset-1">
           WOMEN'S FASHION: 
           <% @women_cats.each do |women_cat| %>
-            <%= link_to women_cat.upcase, "/search?category="+women_cat %>,
+            <%= link_to women_cat.upcase, search_path({subcategory: 'women', detailcategory: women_cat}) %>,
           <% end %>
         </div>
       </div>
@@ -49,7 +49,7 @@
             <%= electronics_cat.upcase %>: 
 
             <% @electronics_cats[electronics_cat].each do |electronics_subcat| %>
-              <%= link_to electronics_subcat.upcase, "/search?category="+electronics_subcat %>,
+              <%= link_to electronics_subcat.upcase, search_path({subcategory: 'electronics', detailcategory: electronics_cat}) %>,
             <% end %>
           </div>
         <% end %>
@@ -64,7 +64,7 @@
             <%= personal_care_cat.upcase %>: 
 
             <% @personal_care_cats[personal_care_cat].each do |personal_care_subcat| %>
-              <%= link_to personal_care_subcat.upcase, "/search?category="+personal_care_subcat %>,
+              <%= link_to personal_care_subcat.upcase, search_path({subcategory: 'personal_care', detailcategory: personal_care_cat}) %>,
             <% end %>
           </div>
         <% end %>
@@ -94,10 +94,6 @@
 <%= render 'layouts/footer' %>
 
 <script type="text/javascript">
-  $(document).ready(function () {
-    console.log("document loaded")
-  });
-
   // hides the main "menu_options" div
   function hide_all_menu_options() {
     $("#menu_options").addClass("hidden");
@@ -152,5 +148,4 @@
 
     show_option(this.id+"_option");
   });
-
 </script>
